@@ -10,11 +10,12 @@ using System.Windows.Forms;
 
 namespace FitnessTrackingManagementSystem
 {
-    public partial class Form1 : Form
+    public partial class SignInForm : Form
     {
-        public Form1()
+        public SignInForm()
         {
             InitializeComponent();
         }
+
     }
 }
