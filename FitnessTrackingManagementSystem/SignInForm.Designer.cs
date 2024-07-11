@@ -70,6 +70,7 @@
             this.login_signupBtn.TabIndex = 9;
             this.login_signupBtn.Text = "SIGN UP";
             this.login_signupBtn.UseVisualStyleBackColor = false;
+            this.login_signupBtn.Click += new System.EventHandler(this.login_signupBtn_Click);
             // 
             // label2
             // 
@@ -115,6 +116,7 @@
             this.login_password.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.login_password.Location = new System.Drawing.Point(341, 342);
             this.login_password.Name = "login_password";
+            this.login_password.PasswordChar = '*';
             this.login_password.Size = new System.Drawing.Size(460, 35);
             this.login_password.TabIndex = 6;
             // 
@@ -154,6 +156,7 @@
             this.login_showPassword.TabIndex = 8;
             this.login_showPassword.Text = "Show Password";
             this.login_showPassword.UseVisualStyleBackColor = true;
+            this.login_showPassword.CheckedChanged += new System.EventHandler(this.login_showPassword_CheckedChanged);
             // 
             // pictureBox1
             // 
@@ -185,6 +188,7 @@
             this.Name = "SignInForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sign In";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SignInForm_FormClosing);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

@@ -71,6 +71,7 @@
             this.register_signInBtn.TabIndex = 9;
             this.register_signInBtn.Text = "SIGN IN";
             this.register_signInBtn.UseVisualStyleBackColor = false;
+            this.register_signInBtn.Click += new System.EventHandler(this.register_signInBtn_Click);
             // 
             // label2
             // 
@@ -103,6 +104,7 @@
             this.register_showPassword.TabIndex = 16;
             this.register_showPassword.Text = "Show Password";
             this.register_showPassword.UseVisualStyleBackColor = true;
+            this.register_showPassword.CheckedChanged += new System.EventHandler(this.register_showPassword_CheckedChanged);
             // 
             // register_btn
             // 
@@ -119,6 +121,7 @@
             this.register_btn.TabIndex = 15;
             this.register_btn.Text = "SIGN UP";
             this.register_btn.UseVisualStyleBackColor = false;
+            this.register_btn.Click += new System.EventHandler(this.register_btn_Click);
             // 
             // label3
             // 
@@ -135,6 +138,7 @@
             this.register_password.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.register_password.Location = new System.Drawing.Point(341, 249);
             this.register_password.Name = "register_password";
+            this.register_password.PasswordChar = '*';
             this.register_password.Size = new System.Drawing.Size(460, 35);
             this.register_password.TabIndex = 20;
             // 
@@ -171,6 +175,7 @@
             this.register_confirmPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.register_confirmPass.Location = new System.Drawing.Point(341, 339);
             this.register_confirmPass.Name = "register_confirmPass";
+            this.register_confirmPass.PasswordChar = '*';
             this.register_confirmPass.Size = new System.Drawing.Size(460, 35);
             this.register_confirmPass.TabIndex = 22;
             // 
@@ -203,9 +208,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "RegisterForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Register";
-            this.Load += new System.EventHandler(this.RegisterForm_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RegisterForm_FormClosing);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
