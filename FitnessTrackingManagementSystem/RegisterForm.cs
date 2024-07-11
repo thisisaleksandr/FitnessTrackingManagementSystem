@@ -16,7 +16,7 @@ namespace FitnessTrackingManagementSystem
     public partial class RegisterForm : Form
     {
         // create a connection to local sql server db
-        SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\DSU\Documents\fitnessManager.mdf;Integrated Security=True;Connect Timeout=30");
+        SqlConnection connect = new SqlConnection(sqlConnectionString.connectionString);
         public RegisterForm()
         {
             InitializeComponent();

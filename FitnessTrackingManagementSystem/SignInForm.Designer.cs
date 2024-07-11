@@ -32,6 +32,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.login_signupBtn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.login_username = new System.Windows.Forms.TextBox();
@@ -39,7 +40,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.login_btn = new System.Windows.Forms.Button();
             this.login_showPassword = new System.Windows.Forms.CheckBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -82,6 +82,16 @@
             this.label2.Size = new System.Drawing.Size(286, 29);
             this.label2.TabIndex = 1;
             this.label2.Text = "Fitness Tracking Manager";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::FitnessTrackingManagementSystem.Properties.Resources.main_icon;
+            this.pictureBox1.Location = new System.Drawing.Point(60, 130);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(200, 200);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // label3
             // 
@@ -145,6 +155,7 @@
             this.login_btn.TabIndex = 7;
             this.login_btn.Text = "LOG IN";
             this.login_btn.UseVisualStyleBackColor = false;
+            this.login_btn.Click += new System.EventHandler(this.login_btn_Click);
             // 
             // login_showPassword
             // 
@@ -157,16 +168,6 @@
             this.login_showPassword.Text = "Show Password";
             this.login_showPassword.UseVisualStyleBackColor = true;
             this.login_showPassword.CheckedChanged += new System.EventHandler(this.login_showPassword_CheckedChanged);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::FitnessTrackingManagementSystem.Properties.Resources.main_icon;
-            this.pictureBox1.Location = new System.Drawing.Point(60, 130);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(200, 200);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // SignInForm
             // 
