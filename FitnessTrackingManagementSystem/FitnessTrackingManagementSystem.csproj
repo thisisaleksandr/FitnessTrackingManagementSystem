@@ -59,6 +59,7 @@
     <Compile Include="FitnessLogForm.Designer.cs">
       <DependentUpon>FitnessLogForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="FoodData.cs" />
     <Compile Include="FoodLogForm.cs">
       <SubType>UserControl</SubType>
     </Compile>

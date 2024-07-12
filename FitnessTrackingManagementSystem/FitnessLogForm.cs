@@ -65,6 +65,7 @@ namespace FitnessTrackingManagementSystem
 
                 }
             }
+            displayFitnessDataList(); // update table
         }
 
         // filling textboxes when we click on rows
@@ -128,7 +129,6 @@ namespace FitnessTrackingManagementSystem
             fitnessLog_activity.SelectedIndex = -1;
             fitnessLog_duration.Text = "";
             fitnessLog_calorie.Text = "";
-            fitnessLog_date.Text = "";
         }
 
         private void fitnessLog_clearBtn_Click(object sender, EventArgs e)
