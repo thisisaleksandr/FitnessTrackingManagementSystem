@@ -52,11 +52,12 @@
     <Compile Include="Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="FitnessLog.cs">
+    <Compile Include="FitnessData.cs" />
+    <Compile Include="FitnessLogForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="FitnessLog.Designer.cs">
-      <DependentUpon>FitnessLog.cs</DependentUpon>
+    <Compile Include="FitnessLogForm.Designer.cs">
+      <DependentUpon>FitnessLogForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -82,8 +83,8 @@
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FitnessLog.resx">
-      <DependentUpon>FitnessLog.cs</DependentUpon>
+    <EmbeddedResource Include="FitnessLogForm.resx">
+      <DependentUpon>FitnessLogForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

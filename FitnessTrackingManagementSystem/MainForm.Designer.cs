@@ -31,29 +31,31 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
+            this.main_dashboardBtn = new System.Windows.Forms.Button();
+            this.main_fitnessLogBtn = new System.Windows.Forms.Button();
+            this.main_weightBtn = new System.Windows.Forms.Button();
+            this.main_foodLogBtn = new System.Windows.Forms.Button();
+            this.main_settingsBtn = new System.Windows.Forms.Button();
+            this.main_historyBtn = new System.Windows.Forms.Button();
+            this.main_logoutBtn = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.fitnessLog1 = new FitnessTrackingManagementSystem.FitnessLogForm();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Indigo;
-            this.panel1.Controls.Add(this.button8);
-            this.panel1.Controls.Add(this.button6);
-            this.panel1.Controls.Add(this.button7);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.main_logoutBtn);
+            this.panel1.Controls.Add(this.main_settingsBtn);
+            this.panel1.Controls.Add(this.main_historyBtn);
+            this.panel1.Controls.Add(this.main_weightBtn);
+            this.panel1.Controls.Add(this.main_foodLogBtn);
+            this.panel1.Controls.Add(this.main_fitnessLogBtn);
+            this.panel1.Controls.Add(this.main_dashboardBtn);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -73,99 +75,101 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Welcome!";
             // 
-            // button1
+            // main_dashboardBtn
             // 
-            this.button1.BackColor = System.Drawing.Color.Indigo;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(12, 293);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(220, 49);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Dashboard";
-            this.button1.UseVisualStyleBackColor = false;
+            this.main_dashboardBtn.BackColor = System.Drawing.Color.Indigo;
+            this.main_dashboardBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.main_dashboardBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.main_dashboardBtn.ForeColor = System.Drawing.Color.White;
+            this.main_dashboardBtn.Location = new System.Drawing.Point(12, 293);
+            this.main_dashboardBtn.Name = "main_dashboardBtn";
+            this.main_dashboardBtn.Size = new System.Drawing.Size(220, 49);
+            this.main_dashboardBtn.TabIndex = 2;
+            this.main_dashboardBtn.Text = "Dashboard";
+            this.main_dashboardBtn.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // main_fitnessLogBtn
             // 
-            this.button2.BackColor = System.Drawing.Color.Indigo;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(12, 355);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(220, 49);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Fitness Log";
-            this.button2.UseVisualStyleBackColor = false;
+            this.main_fitnessLogBtn.BackColor = System.Drawing.Color.Indigo;
+            this.main_fitnessLogBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.main_fitnessLogBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.main_fitnessLogBtn.ForeColor = System.Drawing.Color.White;
+            this.main_fitnessLogBtn.Location = new System.Drawing.Point(12, 355);
+            this.main_fitnessLogBtn.Name = "main_fitnessLogBtn";
+            this.main_fitnessLogBtn.Size = new System.Drawing.Size(220, 49);
+            this.main_fitnessLogBtn.TabIndex = 3;
+            this.main_fitnessLogBtn.Text = "Fitness Log";
+            this.main_fitnessLogBtn.UseVisualStyleBackColor = false;
             // 
-            // button3
+            // main_weightBtn
             // 
-            this.button3.BackColor = System.Drawing.Color.Indigo;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(12, 479);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(220, 49);
-            this.button3.TabIndex = 5;
-            this.button3.Text = "Current Weight";
-            this.button3.UseVisualStyleBackColor = false;
+            this.main_weightBtn.BackColor = System.Drawing.Color.Indigo;
+            this.main_weightBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.main_weightBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.main_weightBtn.ForeColor = System.Drawing.Color.White;
+            this.main_weightBtn.Location = new System.Drawing.Point(12, 479);
+            this.main_weightBtn.Name = "main_weightBtn";
+            this.main_weightBtn.Size = new System.Drawing.Size(220, 49);
+            this.main_weightBtn.TabIndex = 5;
+            this.main_weightBtn.Text = "Current Weight";
+            this.main_weightBtn.UseVisualStyleBackColor = false;
             // 
-            // button4
+            // main_foodLogBtn
             // 
-            this.button4.BackColor = System.Drawing.Color.Indigo;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(12, 417);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(220, 49);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "Food Log";
-            this.button4.UseVisualStyleBackColor = false;
+            this.main_foodLogBtn.BackColor = System.Drawing.Color.Indigo;
+            this.main_foodLogBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.main_foodLogBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.main_foodLogBtn.ForeColor = System.Drawing.Color.White;
+            this.main_foodLogBtn.Location = new System.Drawing.Point(12, 417);
+            this.main_foodLogBtn.Name = "main_foodLogBtn";
+            this.main_foodLogBtn.Size = new System.Drawing.Size(220, 49);
+            this.main_foodLogBtn.TabIndex = 4;
+            this.main_foodLogBtn.Text = "Food Log";
+            this.main_foodLogBtn.UseVisualStyleBackColor = false;
             // 
-            // button6
+            // main_settingsBtn
             // 
-            this.button6.BackColor = System.Drawing.Color.Indigo;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Location = new System.Drawing.Point(12, 601);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(220, 49);
-            this.button6.TabIndex = 7;
-            this.button6.Text = "Settings";
-            this.button6.UseVisualStyleBackColor = false;
+            this.main_settingsBtn.BackColor = System.Drawing.Color.Indigo;
+            this.main_settingsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.main_settingsBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.main_settingsBtn.ForeColor = System.Drawing.Color.White;
+            this.main_settingsBtn.Location = new System.Drawing.Point(12, 601);
+            this.main_settingsBtn.Name = "main_settingsBtn";
+            this.main_settingsBtn.Size = new System.Drawing.Size(220, 49);
+            this.main_settingsBtn.TabIndex = 7;
+            this.main_settingsBtn.Text = "Settings";
+            this.main_settingsBtn.UseVisualStyleBackColor = false;
             // 
-            // button7
+            // main_historyBtn
             // 
-            this.button7.BackColor = System.Drawing.Color.Indigo;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.ForeColor = System.Drawing.Color.White;
-            this.button7.Location = new System.Drawing.Point(12, 539);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(220, 49);
-            this.button7.TabIndex = 6;
-            this.button7.Text = "History";
-            this.button7.UseVisualStyleBackColor = false;
+            this.main_historyBtn.BackColor = System.Drawing.Color.Indigo;
+            this.main_historyBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.main_historyBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.main_historyBtn.ForeColor = System.Drawing.Color.White;
+            this.main_historyBtn.Location = new System.Drawing.Point(12, 539);
+            this.main_historyBtn.Name = "main_historyBtn";
+            this.main_historyBtn.Size = new System.Drawing.Size(220, 49);
+            this.main_historyBtn.TabIndex = 6;
+            this.main_historyBtn.Text = "History";
+            this.main_historyBtn.UseVisualStyleBackColor = false;
             // 
-            // button8
+            // main_logoutBtn
             // 
-            this.button8.BackColor = System.Drawing.Color.Indigo;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.ForeColor = System.Drawing.Color.White;
-            this.button8.Location = new System.Drawing.Point(12, 663);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(220, 49);
-            this.button8.TabIndex = 9;
-            this.button8.Text = "Log out";
-            this.button8.UseVisualStyleBackColor = false;
+            this.main_logoutBtn.BackColor = System.Drawing.Color.Indigo;
+            this.main_logoutBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.main_logoutBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.main_logoutBtn.ForeColor = System.Drawing.Color.White;
+            this.main_logoutBtn.Location = new System.Drawing.Point(12, 663);
+            this.main_logoutBtn.Name = "main_logoutBtn";
+            this.main_logoutBtn.Size = new System.Drawing.Size(220, 49);
+            this.main_logoutBtn.TabIndex = 9;
+            this.main_logoutBtn.Text = "Log out";
+            this.main_logoutBtn.UseVisualStyleBackColor = false;
+            this.main_logoutBtn.Click += new System.EventHandler(this.main_logoutBtn_Click);
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.fitnessLog1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(250, 0);
             this.panel2.Name = "panel2";
@@ -181,6 +185,13 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            // 
+            // fitnessLog1
+            // 
+            this.fitnessLog1.Location = new System.Drawing.Point(0, 0);
+            this.fitnessLog1.Name = "fitnessLog1";
+            this.fitnessLog1.Size = new System.Drawing.Size(928, 744);
+            this.fitnessLog1.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -198,6 +209,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RegisterForm_FormClosing);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -206,15 +218,16 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button main_dashboardBtn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button main_fitnessLogBtn;
+        private System.Windows.Forms.Button main_logoutBtn;
+        private System.Windows.Forms.Button main_settingsBtn;
+        private System.Windows.Forms.Button main_historyBtn;
+        private System.Windows.Forms.Button main_weightBtn;
+        private System.Windows.Forms.Button main_foodLogBtn;
         private System.Windows.Forms.Panel panel2;
+        private FitnessLogForm fitnessLog1;
     }
 }

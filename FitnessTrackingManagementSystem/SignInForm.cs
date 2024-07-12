@@ -28,7 +28,11 @@ namespace FitnessTrackingManagementSystem
 
         private void SignInForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+            if(MessageBox.Show("Are you sure you want to exit?", "Confirmation Message",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No){
+                e.Cancel = true;
+                //Application.Exit();
+            }
         }
 
         private void login_showPassword_CheckedChanged(object sender, EventArgs e)

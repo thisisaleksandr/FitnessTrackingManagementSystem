@@ -18,7 +18,25 @@ namespace FitnessTrackingManagementSystem
         }
         private void RegisterForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+            if (MessageBox.Show("Are you sure you want to exit?", "Confirmation Message",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+
+        }
+
+        private void main_logoutBtn_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to logout?", "Confirmation Message",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                SignInForm form1 = new SignInForm();
+
+                form1.Show();
+
+                this.Hide();
+            }
         }
     }
 }

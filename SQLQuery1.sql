@@ -6,3 +6,14 @@
 )
 
 SELECT * FROM users;
+
+CREATE TABLE fitness_log(
+	id INT PRIMARY KEY IDENTITY(1,1),
+	activity VARCHAR(MAX) NULL,
+	duration INT NULL,
+	calories INT NULL,
+	date_insert DATE NULL
+)
+DROP TABLE fitness_log;
+
+SELECT * FROM fitness_log;
