@@ -27,6 +27,7 @@ namespace FitnessTrackingManagementSystem
             List<FitnessData> listData = fData.fitnessDataList();
 
             dataGridView1.DataSource = listData;
+
         }
 
         private void fitnessLog_addBtn_Click(object sender, EventArgs e)
@@ -169,5 +170,7 @@ namespace FitnessTrackingManagementSystem
             }
             displayFitnessDataList();
         }
+
+        
     }
 }

@@ -14,6 +14,14 @@ CREATE TABLE fitness_log(
 	calories INT NULL,
 	date_insert DATE NULL
 )
-DROP TABLE fitness_log;
-
 SELECT * FROM fitness_log;
+
+CREATE TABLE food_log(
+	id INT PRIMARY KEY IDENTITY(1,1),
+	meal_name VARCHAR(MAX) NULL,
+	calories INT NULL,
+	date_insert DATE NULL
+)
+
+
+SELECT * FROM food_log;

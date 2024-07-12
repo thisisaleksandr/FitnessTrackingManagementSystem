@@ -30,17 +30,18 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.main_dashboardBtn = new System.Windows.Forms.Button();
-            this.main_fitnessLogBtn = new System.Windows.Forms.Button();
-            this.main_weightBtn = new System.Windows.Forms.Button();
-            this.main_foodLogBtn = new System.Windows.Forms.Button();
+            this.main_logoutBtn = new System.Windows.Forms.Button();
             this.main_settingsBtn = new System.Windows.Forms.Button();
             this.main_historyBtn = new System.Windows.Forms.Button();
-            this.main_logoutBtn = new System.Windows.Forms.Button();
+            this.main_weightBtn = new System.Windows.Forms.Button();
+            this.main_foodLogBtn = new System.Windows.Forms.Button();
+            this.main_fitnessLogBtn = new System.Windows.Forms.Button();
+            this.main_dashboardBtn = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.fitnessLog1 = new FitnessTrackingManagementSystem.FitnessLogForm();
+            this.foodLogForm1 = new FitnessTrackingManagementSystem.FoodLogForm();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -64,68 +65,19 @@
             this.panel1.Size = new System.Drawing.Size(250, 744);
             this.panel1.TabIndex = 0;
             // 
-            // label1
+            // main_logoutBtn
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(61, 208);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(118, 29);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Welcome!";
-            // 
-            // main_dashboardBtn
-            // 
-            this.main_dashboardBtn.BackColor = System.Drawing.Color.Indigo;
-            this.main_dashboardBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.main_dashboardBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.main_dashboardBtn.ForeColor = System.Drawing.Color.White;
-            this.main_dashboardBtn.Location = new System.Drawing.Point(12, 293);
-            this.main_dashboardBtn.Name = "main_dashboardBtn";
-            this.main_dashboardBtn.Size = new System.Drawing.Size(220, 49);
-            this.main_dashboardBtn.TabIndex = 2;
-            this.main_dashboardBtn.Text = "Dashboard";
-            this.main_dashboardBtn.UseVisualStyleBackColor = false;
-            // 
-            // main_fitnessLogBtn
-            // 
-            this.main_fitnessLogBtn.BackColor = System.Drawing.Color.Indigo;
-            this.main_fitnessLogBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.main_fitnessLogBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.main_fitnessLogBtn.ForeColor = System.Drawing.Color.White;
-            this.main_fitnessLogBtn.Location = new System.Drawing.Point(12, 355);
-            this.main_fitnessLogBtn.Name = "main_fitnessLogBtn";
-            this.main_fitnessLogBtn.Size = new System.Drawing.Size(220, 49);
-            this.main_fitnessLogBtn.TabIndex = 3;
-            this.main_fitnessLogBtn.Text = "Fitness Log";
-            this.main_fitnessLogBtn.UseVisualStyleBackColor = false;
-            // 
-            // main_weightBtn
-            // 
-            this.main_weightBtn.BackColor = System.Drawing.Color.Indigo;
-            this.main_weightBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.main_weightBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.main_weightBtn.ForeColor = System.Drawing.Color.White;
-            this.main_weightBtn.Location = new System.Drawing.Point(12, 479);
-            this.main_weightBtn.Name = "main_weightBtn";
-            this.main_weightBtn.Size = new System.Drawing.Size(220, 49);
-            this.main_weightBtn.TabIndex = 5;
-            this.main_weightBtn.Text = "Current Weight";
-            this.main_weightBtn.UseVisualStyleBackColor = false;
-            // 
-            // main_foodLogBtn
-            // 
-            this.main_foodLogBtn.BackColor = System.Drawing.Color.Indigo;
-            this.main_foodLogBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.main_foodLogBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.main_foodLogBtn.ForeColor = System.Drawing.Color.White;
-            this.main_foodLogBtn.Location = new System.Drawing.Point(12, 417);
-            this.main_foodLogBtn.Name = "main_foodLogBtn";
-            this.main_foodLogBtn.Size = new System.Drawing.Size(220, 49);
-            this.main_foodLogBtn.TabIndex = 4;
-            this.main_foodLogBtn.Text = "Food Log";
-            this.main_foodLogBtn.UseVisualStyleBackColor = false;
+            this.main_logoutBtn.BackColor = System.Drawing.Color.Indigo;
+            this.main_logoutBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.main_logoutBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.main_logoutBtn.ForeColor = System.Drawing.Color.White;
+            this.main_logoutBtn.Location = new System.Drawing.Point(12, 663);
+            this.main_logoutBtn.Name = "main_logoutBtn";
+            this.main_logoutBtn.Size = new System.Drawing.Size(220, 49);
+            this.main_logoutBtn.TabIndex = 9;
+            this.main_logoutBtn.Text = "Log out";
+            this.main_logoutBtn.UseVisualStyleBackColor = false;
+            this.main_logoutBtn.Click += new System.EventHandler(this.main_logoutBtn_Click);
             // 
             // main_settingsBtn
             // 
@@ -153,22 +105,72 @@
             this.main_historyBtn.Text = "History";
             this.main_historyBtn.UseVisualStyleBackColor = false;
             // 
-            // main_logoutBtn
+            // main_weightBtn
             // 
-            this.main_logoutBtn.BackColor = System.Drawing.Color.Indigo;
-            this.main_logoutBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.main_logoutBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.main_logoutBtn.ForeColor = System.Drawing.Color.White;
-            this.main_logoutBtn.Location = new System.Drawing.Point(12, 663);
-            this.main_logoutBtn.Name = "main_logoutBtn";
-            this.main_logoutBtn.Size = new System.Drawing.Size(220, 49);
-            this.main_logoutBtn.TabIndex = 9;
-            this.main_logoutBtn.Text = "Log out";
-            this.main_logoutBtn.UseVisualStyleBackColor = false;
-            this.main_logoutBtn.Click += new System.EventHandler(this.main_logoutBtn_Click);
+            this.main_weightBtn.BackColor = System.Drawing.Color.Indigo;
+            this.main_weightBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.main_weightBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.main_weightBtn.ForeColor = System.Drawing.Color.White;
+            this.main_weightBtn.Location = new System.Drawing.Point(12, 479);
+            this.main_weightBtn.Name = "main_weightBtn";
+            this.main_weightBtn.Size = new System.Drawing.Size(220, 49);
+            this.main_weightBtn.TabIndex = 5;
+            this.main_weightBtn.Text = "Current Weight";
+            this.main_weightBtn.UseVisualStyleBackColor = false;
+            // 
+            // main_foodLogBtn
+            // 
+            this.main_foodLogBtn.BackColor = System.Drawing.Color.Indigo;
+            this.main_foodLogBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.main_foodLogBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.main_foodLogBtn.ForeColor = System.Drawing.Color.White;
+            this.main_foodLogBtn.Location = new System.Drawing.Point(12, 417);
+            this.main_foodLogBtn.Name = "main_foodLogBtn";
+            this.main_foodLogBtn.Size = new System.Drawing.Size(220, 49);
+            this.main_foodLogBtn.TabIndex = 4;
+            this.main_foodLogBtn.Text = "Food Log";
+            this.main_foodLogBtn.UseVisualStyleBackColor = false;
+            // 
+            // main_fitnessLogBtn
+            // 
+            this.main_fitnessLogBtn.BackColor = System.Drawing.Color.Indigo;
+            this.main_fitnessLogBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.main_fitnessLogBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.main_fitnessLogBtn.ForeColor = System.Drawing.Color.White;
+            this.main_fitnessLogBtn.Location = new System.Drawing.Point(12, 355);
+            this.main_fitnessLogBtn.Name = "main_fitnessLogBtn";
+            this.main_fitnessLogBtn.Size = new System.Drawing.Size(220, 49);
+            this.main_fitnessLogBtn.TabIndex = 3;
+            this.main_fitnessLogBtn.Text = "Fitness Log";
+            this.main_fitnessLogBtn.UseVisualStyleBackColor = false;
+            // 
+            // main_dashboardBtn
+            // 
+            this.main_dashboardBtn.BackColor = System.Drawing.Color.Indigo;
+            this.main_dashboardBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.main_dashboardBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.main_dashboardBtn.ForeColor = System.Drawing.Color.White;
+            this.main_dashboardBtn.Location = new System.Drawing.Point(12, 293);
+            this.main_dashboardBtn.Name = "main_dashboardBtn";
+            this.main_dashboardBtn.Size = new System.Drawing.Size(220, 49);
+            this.main_dashboardBtn.TabIndex = 2;
+            this.main_dashboardBtn.Text = "Dashboard";
+            this.main_dashboardBtn.UseVisualStyleBackColor = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(61, 208);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(118, 29);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Welcome!";
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.foodLogForm1);
             this.panel2.Controls.Add(this.fitnessLog1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(250, 0);
@@ -192,6 +194,13 @@
             this.fitnessLog1.Name = "fitnessLog1";
             this.fitnessLog1.Size = new System.Drawing.Size(928, 744);
             this.fitnessLog1.TabIndex = 0;
+            // 
+            // foodLogForm1
+            // 
+            this.foodLogForm1.Location = new System.Drawing.Point(0, 0);
+            this.foodLogForm1.Name = "foodLogForm1";
+            this.foodLogForm1.Size = new System.Drawing.Size(928, 744);
+            this.foodLogForm1.TabIndex = 1;
             // 
             // MainForm
             // 
@@ -229,5 +238,6 @@
         private System.Windows.Forms.Button main_foodLogBtn;
         private System.Windows.Forms.Panel panel2;
         private FitnessLogForm fitnessLog1;
+        private FoodLogForm foodLogForm1;
     }
 }

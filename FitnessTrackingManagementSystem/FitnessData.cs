@@ -40,12 +40,13 @@ namespace FitnessTrackingManagementSystem
                         fData.Activity = reader["activity"].ToString();
                         fData.Duration = (int)reader["duration"];
                         fData.Calories = (int)reader["calories"];
-                        fData.Date = reader["date_insert"].ToString();
+                        fData.Date = ((DateTime)reader["date_insert"]).ToString("MM-dd-yyyy");
 
                         listData.Add(fData);
                         
                     }
                 }
+                connect.Close();
             }
             return listData;
         }
