@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CurrentWeightForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CurrentWeightForm.Designer.cs">
+      <DependentUpon>CurrentWeightForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dashboard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -87,6 +93,10 @@
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
     <Compile Include="sqlConnection.cs" />
+    <Compile Include="WeightData.cs" />
+    <EmbeddedResource Include="CurrentWeightForm.resx">
+      <DependentUpon>CurrentWeightForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>

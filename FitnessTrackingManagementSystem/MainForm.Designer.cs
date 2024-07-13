@@ -38,13 +38,14 @@
             this.main_fitnessLogBtn = new System.Windows.Forms.Button();
             this.main_dashboardBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.fitnessLog1 = new FitnessTrackingManagementSystem.FitnessLogForm();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.currentWeightForm1 = new FitnessTrackingManagementSystem.CurrentWeightForm();
             this.foodLogForm1 = new FitnessTrackingManagementSystem.FoodLogForm();
+            this.fitnessLog1 = new FitnessTrackingManagementSystem.FitnessLogForm();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -168,16 +169,6 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Welcome!";
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.foodLogForm1);
-            this.panel2.Controls.Add(this.fitnessLog1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(250, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(928, 744);
-            this.panel2.TabIndex = 1;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::FitnessTrackingManagementSystem.Properties.Resources.main_icon;
@@ -188,12 +179,23 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // fitnessLog1
+            // panel2
             // 
-            this.fitnessLog1.Location = new System.Drawing.Point(0, 0);
-            this.fitnessLog1.Name = "fitnessLog1";
-            this.fitnessLog1.Size = new System.Drawing.Size(928, 744);
-            this.fitnessLog1.TabIndex = 0;
+            this.panel2.Controls.Add(this.currentWeightForm1);
+            this.panel2.Controls.Add(this.foodLogForm1);
+            this.panel2.Controls.Add(this.fitnessLog1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(250, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(928, 744);
+            this.panel2.TabIndex = 1;
+            // 
+            // currentWeightForm1
+            // 
+            this.currentWeightForm1.Location = new System.Drawing.Point(0, 0);
+            this.currentWeightForm1.Name = "currentWeightForm1";
+            this.currentWeightForm1.Size = new System.Drawing.Size(928, 744);
+            this.currentWeightForm1.TabIndex = 2;
             // 
             // foodLogForm1
             // 
@@ -201,6 +203,13 @@
             this.foodLogForm1.Name = "foodLogForm1";
             this.foodLogForm1.Size = new System.Drawing.Size(928, 744);
             this.foodLogForm1.TabIndex = 1;
+            // 
+            // fitnessLog1
+            // 
+            this.fitnessLog1.Location = new System.Drawing.Point(0, 0);
+            this.fitnessLog1.Name = "fitnessLog1";
+            this.fitnessLog1.Size = new System.Drawing.Size(928, 744);
+            this.fitnessLog1.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -218,8 +227,8 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RegisterForm_FormClosing);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -239,5 +248,6 @@
         private System.Windows.Forms.Panel panel2;
         private FitnessLogForm fitnessLog1;
         private FoodLogForm foodLogForm1;
+        private CurrentWeightForm currentWeightForm1;
     }
 }

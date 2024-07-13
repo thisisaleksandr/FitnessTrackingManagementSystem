@@ -2,37 +2,37 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 
 namespace FitnessTrackingManagementSystem
 {
-    public partial class FoodLogForm : UserControl
+    public partial class CurrentWeightForm : UserControl
     {
-        private int getID = 0; // get IT to update the table
-        public FoodLogForm()
+        private int getID = 0;
+        public CurrentWeightForm()
         {
             InitializeComponent();
 
-            displayFoodDataList();
+            displayWeightDataList();
         }
 
-        public void displayFoodDataList()
+        public void displayWeightDataList()
         {
-            FoodData fData = new FoodData();
-            List<FoodData> listData = fData.foodDataList();
+            WeightData wData = new WeightData();
+            List<WeightData> listData = wData.weightDataList();
 
             dataGridView1.DataSource = listData;
 
         }
 
-        private void foodLog_addBtn_Click(object sender, EventArgs e)
+        private void currWeight_addBtn_Click(object sender, EventArgs e)
         {
-            if (foodLog_foodType.Text == "" || foodLog_calorie.Text == "")
+            if (currWeight_weight.Text == "")
             {
                 MessageBox.Show("Please fill all blank fields", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -43,14 +43,13 @@ namespace FitnessTrackingManagementSystem
                     // open connection to sql
                     connect.Open();
 
-                    string insertData = "INSERT INTO food_log (meal_name, calories, date_insert) " +
-                        "VALUES(@meal, @cal, @date)";
+                    string insertData = "INSERT INTO weight_log (weight_value, date_insert) " +
+                        "VALUES(@weight, @date)";
 
                     using (SqlCommand cmd = new SqlCommand(insertData, connect))
                     {
-                        cmd.Parameters.AddWithValue("@meal", foodLog_foodType.Text);
-                        cmd.Parameters.AddWithValue("@cal", Int32.Parse(foodLog_calorie.Text.Trim()));
-                        cmd.Parameters.AddWithValue("@date", foodLog_date.Text);
+                        cmd.Parameters.AddWithValue("@weight", double.Parse(currWeight_weight.Text.Trim()));
+                        cmd.Parameters.AddWithValue("@date", currWeight_date.Text);
 
                         cmd.ExecuteNonQuery();
                         clearFields();
@@ -62,23 +61,22 @@ namespace FitnessTrackingManagementSystem
 
                 }
             }
-            displayFoodDataList();
+            displayWeightDataList();
         }
 
         private void clearFields()
         {
-            foodLog_foodType.Text = "";
-            foodLog_calorie.Text = "";
+            currWeight_weight.Text = "";
         }
 
-        private void foodLog_clearBtn_Click(object sender, EventArgs e)
+        private void currWeight_clearBtn_Click(object sender, EventArgs e)
         {
             clearFields();
         }
 
-        private void foodLog_updateBtn_Click(object sender, EventArgs e)
+        private void currWeight_updateBtn_Click(object sender, EventArgs e)
         {
-            if (foodLog_foodType.Text == "" || foodLog_calorie.Text == "")
+            if (currWeight_weight.Text == "")
             {
                 MessageBox.Show("Please select item from the table", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -91,16 +89,15 @@ namespace FitnessTrackingManagementSystem
                         // open connection to sql
                         connect.Open();
 
-                        string updateData = "UPDATE food_log SET meal_name = @meal, " +
-                            "calories = @cal, date_insert = @date WHERE id = @id ";
+                        string updateData = "UPDATE weight_log SET weight_value = @weight, " +
+                            "date_insert = @date WHERE id = @id ";
 
                         using (SqlCommand cmd = new SqlCommand(updateData, connect))
                         {
                             cmd.Parameters.AddWithValue("@id", getID);
 
-                            cmd.Parameters.AddWithValue("@meal", foodLog_foodType.Text);
-                            cmd.Parameters.AddWithValue("@cal", Int32.Parse(foodLog_calorie.Text.Trim()));
-                            cmd.Parameters.AddWithValue("@date", foodLog_date.Text);
+                            cmd.Parameters.AddWithValue("@weight", double.Parse(currWeight_weight.Text.Trim()));
+                            cmd.Parameters.AddWithValue("@date", currWeight_date.Text);
 
                             cmd.ExecuteNonQuery();
                             clearFields();
@@ -112,10 +109,8 @@ namespace FitnessTrackingManagementSystem
                     }
                 }
             }
-            displayFoodDataList();
+            displayWeightDataList();
         }
-
-        // filling textboxes when we click on rows
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex != -1)
@@ -124,15 +119,14 @@ namespace FitnessTrackingManagementSystem
 
                 getID = Convert.ToInt32(row.Cells[0].Value);
 
-                foodLog_foodType.Text = row.Cells[1].Value.ToString();
-                foodLog_calorie.Text = row.Cells[2].Value.ToString();
-                foodLog_date.Text = row.Cells[3].Value.ToString();
+                currWeight_weight.Text = row.Cells[1].Value.ToString();
+                currWeight_date.Text = row.Cells[2].Value.ToString();
             }
         }
 
-        private void foodLog_deleteBtn_Click(object sender, EventArgs e)
+        private void currWeight_deleteBtn_Click(object sender, EventArgs e)
         {
-            if (foodLog_foodType.Text == "" || foodLog_calorie.Text == "")
+            if (currWeight_weight.Text == "")
             {
                 MessageBox.Show("Please select item from the table", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -145,7 +139,7 @@ namespace FitnessTrackingManagementSystem
                         // open connection to sql
                         connect.Open();
 
-                        string updateData = "DELETE FROM food_log WHERE id = @id";
+                        string updateData = "DELETE FROM weight_log WHERE id = @id";
 
                         using (SqlCommand cmd = new SqlCommand(updateData, connect))
                         {
@@ -161,7 +155,7 @@ namespace FitnessTrackingManagementSystem
                     }
                 }
             }
-            displayFoodDataList();
+            displayWeightDataList();
         }
     }
 }

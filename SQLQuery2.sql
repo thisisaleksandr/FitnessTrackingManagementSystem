@@ -24,3 +24,11 @@ CREATE TABLE food_log(
 )
 
 SELECT * FROM food_log;
+
+CREATE TABLE weight_log(
+	id INT PRIMARY KEY IDENTITY(1,1),
+	weight_value VARCHAR(MAX) NULL,
+	date_insert DATE NULL
+)
+
+SELECT * FROM weight_log;
