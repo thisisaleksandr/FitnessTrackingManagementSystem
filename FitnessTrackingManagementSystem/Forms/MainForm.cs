@@ -10,12 +10,28 @@ using System.Windows.Forms;
 
 namespace FitnessTrackingManagementSystem
 {
+    using Classes;
     public partial class MainForm : Form
     {
+        private User _currentUser;
         public MainForm()
         {
             InitializeComponent();
         }
+
+        public MainForm(User currentUser)
+        {
+            InitializeComponent();
+
+            _currentUser = currentUser;
+            WelcomeUserChange();
+        }
+
+        private void WelcomeUserChange()
+        {
+            main_welcome.Text = String.Format("Welcome,\n{0}!", _currentUser.Username);
+        }
+
         private void RegisterForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (MessageBox.Show("Are you sure you want to exit?", "Confirmation Message",
@@ -37,6 +53,71 @@ namespace FitnessTrackingManagementSystem
 
                 this.Hide();
             }
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void main_dashboardBtn_Click(object sender, EventArgs e)
+        {
+            dashboard1.Visible = true;
+            fitnessLog1.Visible = false;
+            foodLogForm1.Visible = false;
+            settingsForm1.Visible = false;
+            calorieCalculator1.Visible = false;
+            currentWeightForm1.Visible = false;
+        }
+
+        private void main_fitnessLogBtn_Click(object sender, EventArgs e)
+        {
+            dashboard1.Visible = false;
+            fitnessLog1.Visible = true;
+            foodLogForm1.Visible = false;
+            settingsForm1.Visible = false;
+            calorieCalculator1.Visible = false;
+            currentWeightForm1.Visible = false;
+        }
+
+        private void main_foodLogBtn_Click(object sender, EventArgs e)
+        {
+            dashboard1.Visible = false;
+            fitnessLog1.Visible = false;
+            foodLogForm1.Visible = true;
+            settingsForm1.Visible = false;
+            calorieCalculator1.Visible = false;
+            currentWeightForm1.Visible = false;
+        }
+
+        private void main_weightBtn_Click(object sender, EventArgs e)
+        {
+            dashboard1.Visible = false;
+            fitnessLog1.Visible = false;
+            foodLogForm1.Visible = false;
+            settingsForm1.Visible = false;
+            calorieCalculator1.Visible = false;
+            currentWeightForm1.Visible = true;
+        }
+
+        private void main_calCalcBtn_Click(object sender, EventArgs e)
+        {
+            dashboard1.Visible = false;
+            fitnessLog1.Visible = false;
+            foodLogForm1.Visible = false;
+            settingsForm1.Visible = false;
+            calorieCalculator1.Visible = true;
+            currentWeightForm1.Visible = false;
+        }
+
+        private void main_settingsBtn_Click(object sender, EventArgs e)
+        {
+            dashboard1.Visible = false;
+            fitnessLog1.Visible = false;
+            foodLogForm1.Visible = false;
+            settingsForm1.Visible = true;
+            calorieCalculator1.Visible = false;
+            currentWeightForm1.Visible = false;
         }
     }
 }

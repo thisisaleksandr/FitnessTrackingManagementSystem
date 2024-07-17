@@ -32,14 +32,16 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.main_logoutBtn = new System.Windows.Forms.Button();
             this.main_settingsBtn = new System.Windows.Forms.Button();
-            this.main_historyBtn = new System.Windows.Forms.Button();
+            this.main_calCalcBtn = new System.Windows.Forms.Button();
             this.main_weightBtn = new System.Windows.Forms.Button();
             this.main_foodLogBtn = new System.Windows.Forms.Button();
             this.main_fitnessLogBtn = new System.Windows.Forms.Button();
             this.main_dashboardBtn = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.main_welcome = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.settingsForm1 = new FitnessTrackingManagementSystem.SettingsForm();
+            this.dashboard1 = new FitnessTrackingManagementSystem.Dashboard();
             this.calorieCalculator1 = new FitnessTrackingManagementSystem.CalorieCalculator();
             this.currentWeightForm1 = new FitnessTrackingManagementSystem.CurrentWeightForm();
             this.foodLogForm1 = new FitnessTrackingManagementSystem.FoodLogForm();
@@ -54,12 +56,12 @@
             this.panel1.BackColor = System.Drawing.Color.Indigo;
             this.panel1.Controls.Add(this.main_logoutBtn);
             this.panel1.Controls.Add(this.main_settingsBtn);
-            this.panel1.Controls.Add(this.main_historyBtn);
+            this.panel1.Controls.Add(this.main_calCalcBtn);
             this.panel1.Controls.Add(this.main_weightBtn);
             this.panel1.Controls.Add(this.main_foodLogBtn);
             this.panel1.Controls.Add(this.main_fitnessLogBtn);
             this.panel1.Controls.Add(this.main_dashboardBtn);
-            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.main_welcome);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -93,19 +95,21 @@
             this.main_settingsBtn.TabIndex = 7;
             this.main_settingsBtn.Text = "Settings";
             this.main_settingsBtn.UseVisualStyleBackColor = false;
+            this.main_settingsBtn.Click += new System.EventHandler(this.main_settingsBtn_Click);
             // 
-            // main_historyBtn
+            // main_calCalcBtn
             // 
-            this.main_historyBtn.BackColor = System.Drawing.Color.Indigo;
-            this.main_historyBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.main_historyBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.main_historyBtn.ForeColor = System.Drawing.Color.White;
-            this.main_historyBtn.Location = new System.Drawing.Point(12, 539);
-            this.main_historyBtn.Name = "main_historyBtn";
-            this.main_historyBtn.Size = new System.Drawing.Size(220, 49);
-            this.main_historyBtn.TabIndex = 6;
-            this.main_historyBtn.Text = "Calorie Calculator";
-            this.main_historyBtn.UseVisualStyleBackColor = false;
+            this.main_calCalcBtn.BackColor = System.Drawing.Color.Indigo;
+            this.main_calCalcBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.main_calCalcBtn.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.main_calCalcBtn.ForeColor = System.Drawing.Color.White;
+            this.main_calCalcBtn.Location = new System.Drawing.Point(12, 539);
+            this.main_calCalcBtn.Name = "main_calCalcBtn";
+            this.main_calCalcBtn.Size = new System.Drawing.Size(220, 49);
+            this.main_calCalcBtn.TabIndex = 6;
+            this.main_calCalcBtn.Text = "Calorie Calculator";
+            this.main_calCalcBtn.UseVisualStyleBackColor = false;
+            this.main_calCalcBtn.Click += new System.EventHandler(this.main_calCalcBtn_Click);
             // 
             // main_weightBtn
             // 
@@ -119,6 +123,7 @@
             this.main_weightBtn.TabIndex = 5;
             this.main_weightBtn.Text = "Current Weight";
             this.main_weightBtn.UseVisualStyleBackColor = false;
+            this.main_weightBtn.Click += new System.EventHandler(this.main_weightBtn_Click);
             // 
             // main_foodLogBtn
             // 
@@ -132,6 +137,7 @@
             this.main_foodLogBtn.TabIndex = 4;
             this.main_foodLogBtn.Text = "Food Log";
             this.main_foodLogBtn.UseVisualStyleBackColor = false;
+            this.main_foodLogBtn.Click += new System.EventHandler(this.main_foodLogBtn_Click);
             // 
             // main_fitnessLogBtn
             // 
@@ -145,6 +151,7 @@
             this.main_fitnessLogBtn.TabIndex = 3;
             this.main_fitnessLogBtn.Text = "Fitness Log";
             this.main_fitnessLogBtn.UseVisualStyleBackColor = false;
+            this.main_fitnessLogBtn.Click += new System.EventHandler(this.main_fitnessLogBtn_Click);
             // 
             // main_dashboardBtn
             // 
@@ -158,17 +165,18 @@
             this.main_dashboardBtn.TabIndex = 2;
             this.main_dashboardBtn.Text = "Dashboard";
             this.main_dashboardBtn.UseVisualStyleBackColor = false;
+            this.main_dashboardBtn.Click += new System.EventHandler(this.main_dashboardBtn_Click);
             // 
-            // label1
+            // main_welcome
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(61, 208);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(118, 29);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Welcome!";
+            this.main_welcome.AutoSize = true;
+            this.main_welcome.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.main_welcome.ForeColor = System.Drawing.Color.White;
+            this.main_welcome.Location = new System.Drawing.Point(61, 208);
+            this.main_welcome.Name = "main_welcome";
+            this.main_welcome.Size = new System.Drawing.Size(118, 29);
+            this.main_welcome.TabIndex = 1;
+            this.main_welcome.Text = "Welcome!";
             // 
             // pictureBox1
             // 
@@ -182,6 +190,8 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.settingsForm1);
+            this.panel2.Controls.Add(this.dashboard1);
             this.panel2.Controls.Add(this.calorieCalculator1);
             this.panel2.Controls.Add(this.currentWeightForm1);
             this.panel2.Controls.Add(this.foodLogForm1);
@@ -191,6 +201,21 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(928, 744);
             this.panel2.TabIndex = 1;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // settingsForm1
+            // 
+            this.settingsForm1.Location = new System.Drawing.Point(0, 0);
+            this.settingsForm1.Name = "settingsForm1";
+            this.settingsForm1.Size = new System.Drawing.Size(928, 744);
+            this.settingsForm1.TabIndex = 5;
+            // 
+            // dashboard1
+            // 
+            this.dashboard1.Location = new System.Drawing.Point(0, 0);
+            this.dashboard1.Name = "dashboard1";
+            this.dashboard1.Size = new System.Drawing.Size(928, 744);
+            this.dashboard1.TabIndex = 4;
             // 
             // calorieCalculator1
             // 
@@ -201,7 +226,7 @@
             // 
             // currentWeightForm1
             // 
-            this.currentWeightForm1.Location = new System.Drawing.Point(6, -3);
+            this.currentWeightForm1.Location = new System.Drawing.Point(0, 0);
             this.currentWeightForm1.Name = "currentWeightForm1";
             this.currentWeightForm1.Size = new System.Drawing.Size(928, 744);
             this.currentWeightForm1.TabIndex = 2;
@@ -215,7 +240,7 @@
             // 
             // fitnessLog1
             // 
-            this.fitnessLog1.Location = new System.Drawing.Point(0, 0);
+            this.fitnessLog1.Location = new System.Drawing.Point(-201, 126);
             this.fitnessLog1.Name = "fitnessLog1";
             this.fitnessLog1.Size = new System.Drawing.Size(928, 744);
             this.fitnessLog1.TabIndex = 0;
@@ -246,12 +271,12 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button main_dashboardBtn;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label main_welcome;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button main_fitnessLogBtn;
         private System.Windows.Forms.Button main_logoutBtn;
         private System.Windows.Forms.Button main_settingsBtn;
-        private System.Windows.Forms.Button main_historyBtn;
+        private System.Windows.Forms.Button main_calCalcBtn;
         private System.Windows.Forms.Button main_weightBtn;
         private System.Windows.Forms.Button main_foodLogBtn;
         private System.Windows.Forms.Panel panel2;
@@ -259,5 +284,7 @@
         private FoodLogForm foodLogForm1;
         private CurrentWeightForm currentWeightForm1;
         private CalorieCalculator calorieCalculator1;
+        private Dashboard dashboard1;
+        private SettingsForm settingsForm1;
     }
 }

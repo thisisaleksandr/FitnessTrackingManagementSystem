@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace FitnessTrackingManagementSystem
 {
-    public partial class Settings : UserControl
+    public partial class SettingsForm : UserControl
     {
-        public Settings()
+        public SettingsForm()
         {
             InitializeComponent();
         }

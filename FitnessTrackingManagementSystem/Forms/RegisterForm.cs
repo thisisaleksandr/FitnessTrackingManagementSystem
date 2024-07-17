@@ -69,7 +69,8 @@ namespace FitnessTrackingManagementSystem
 
                             // @usern is a parametr in the query
                             string selectUsername = "SELECT * FROM users WHERE username = @usern";
-
+                            
+                            // check if the username is already in the database
                             using (SqlCommand checkUser = new SqlCommand(selectUsername, connect))
                             {
                                 checkUser.Parameters.AddWithValue("@usern", register_username.Text.Trim());

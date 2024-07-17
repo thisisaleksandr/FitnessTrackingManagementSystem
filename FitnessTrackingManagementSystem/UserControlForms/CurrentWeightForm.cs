@@ -97,7 +97,7 @@ namespace FitnessTrackingManagementSystem
                             cmd.Parameters.AddWithValue("@id", getID);
 
                             cmd.Parameters.AddWithValue("@weight", double.Parse(currWeight_weight.Text.Trim()));
-                            cmd.Parameters.AddWithValue("@date", currWeight_date.Text);
+                            cmd.Parameters.AddWithValue("@date", currWeight_date.Value); //was .Text
 
                             cmd.ExecuteNonQuery();
                             clearFields();

@@ -11,13 +11,13 @@ using System.Data.SqlClient;
 
 namespace FitnessTrackingManagementSystem
 {
+    using Classes;
     public partial class SignInForm : Form
     {
         public SignInForm()
         {
             InitializeComponent();
         }
-
         private void login_signupBtn_Click(object sender, EventArgs e)
         {
             RegisterForm registerForm = new RegisterForm();
@@ -69,8 +69,19 @@ namespace FitnessTrackingManagementSystem
                     if(table.Rows.Count > 0)
                     {
                         MessageBox.Show("Login Successfully!", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        MainForm mainForm = new MainForm();
+                        User currentUser = null;
 
+                        // create user class for the current session
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        if (reader.Read())
+                        {
+                            int currentUserId = reader.GetInt32(reader.GetOrdinal("id"));
+                            string currentUsername = reader.GetString(reader.GetOrdinal("username"));
+                            currentUser = new User(currentUserId, currentUsername);
+                        }
+                        reader.Close();
+
+                        MainForm mainForm = new MainForm(currentUser);
                         mainForm.Show();
                         this.Hide();
                     }

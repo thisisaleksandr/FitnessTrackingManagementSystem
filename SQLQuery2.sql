@@ -5,7 +5,7 @@
 	date_create DATE NULL,
 	bmr_calories INT DEFAULT 1800,
 	calorie_goal INT DEFAULT 200
-)
+);
 
 SELECT * FROM users;
 

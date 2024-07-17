@@ -47,36 +47,36 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\User.cs" />
-    <Compile Include="User Control Forms\CalorieCalculator.cs">
+    <Compile Include="UserControlForms\CalorieCalculator.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="User Control Forms\CalorieCalculator.Designer.cs">
+    <Compile Include="UserControlForms\CalorieCalculator.Designer.cs">
       <DependentUpon>CalorieCalculator.cs</DependentUpon>
     </Compile>
-    <Compile Include="User Control Forms\CurrentWeightForm.cs">
+    <Compile Include="UserControlForms\CurrentWeightForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="User Control Forms\CurrentWeightForm.Designer.cs">
+    <Compile Include="UserControlForms\CurrentWeightForm.Designer.cs">
       <DependentUpon>CurrentWeightForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="User Control Forms\Dashboard.cs">
+    <Compile Include="UserControlForms\Dashboard.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="User Control Forms\Dashboard.Designer.cs">
+    <Compile Include="UserControlForms\Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="FitnessData.cs" />
-    <Compile Include="User Control Forms\FitnessLogForm.cs">
+    <Compile Include="UserControlForms\FitnessLogForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="User Control Forms\FitnessLogForm.Designer.cs">
+    <Compile Include="UserControlForms\FitnessLogForm.Designer.cs">
       <DependentUpon>FitnessLogForm.cs</DependentUpon>
     </Compile>
     <Compile Include="FoodData.cs" />
-    <Compile Include="User Control Forms\FoodLogForm.cs">
+    <Compile Include="UserControlForms\FoodLogForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="User Control Forms\FoodLogForm.Designer.cs">
+    <Compile Include="UserControlForms\FoodLogForm.Designer.cs">
       <DependentUpon>FoodLogForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\MainForm.cs">
@@ -85,11 +85,11 @@
     <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="User Control Forms\Settings.cs">
+    <Compile Include="UserControlForms\SettingsForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="User Control Forms\Settings.Designer.cs">
-      <DependentUpon>Settings.cs</DependentUpon>
+    <Compile Include="UserControlForms\SettingsForm.Designer.cs">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\SignInForm.cs">
       <SubType>Form</SubType>
@@ -107,19 +107,19 @@
     </Compile>
     <Compile Include="sqlConnection.cs" />
     <Compile Include="WeightData.cs" />
-    <EmbeddedResource Include="User Control Forms\CalorieCalculator.resx">
+    <EmbeddedResource Include="UserControlForms\CalorieCalculator.resx">
       <DependentUpon>CalorieCalculator.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User Control Forms\CurrentWeightForm.resx">
+    <EmbeddedResource Include="UserControlForms\CurrentWeightForm.resx">
       <DependentUpon>CurrentWeightForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User Control Forms\Dashboard.resx">
+    <EmbeddedResource Include="UserControlForms\Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User Control Forms\FitnessLogForm.resx">
+    <EmbeddedResource Include="UserControlForms\FitnessLogForm.resx">
       <DependentUpon>FitnessLogForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User Control Forms\FoodLogForm.resx">
+    <EmbeddedResource Include="UserControlForms\FoodLogForm.resx">
       <DependentUpon>FoodLogForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
@@ -128,8 +128,8 @@
     <EmbeddedResource Include="Forms\RegisterForm.resx">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User Control Forms\Settings.resx">
-      <DependentUpon>Settings.cs</DependentUpon>
+    <EmbeddedResource Include="UserControlForms\SettingsForm.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SignInForm.resx">
       <DependentUpon>SignInForm.cs</DependentUpon>

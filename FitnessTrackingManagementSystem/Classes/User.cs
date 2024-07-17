@@ -6,25 +6,26 @@ using System.Threading.Tasks;
 
 namespace FitnessTrackingManagementSystem.Classes
 {
-    internal class User
+    public class User
     {
         private int _id;
-        private string _username;
+        private string _username;     
         private int _bmr_calories;
         private int _calorie_goal;
 
-        public User(int id, string username, int bmr_calories, int calorie_goal)
+        public string Username { get { return _username; } set { _username = value; } }
+        public User(int id, string user_name, int bmr_calories, int calorie_goal)
         {
             _id = id;
-            _username = username;
+            Username = user_name;
             _bmr_calories = bmr_calories;
             _calorie_goal = calorie_goal;
         }
 
-        public User(int id, string username)
+        public User(int id, string user_name)
         {
             _id = id;
-            _username = username;
+            Username = user_name;
             _bmr_calories = 1800;
             _calorie_goal = 200;
         }

@@ -13,7 +13,7 @@ namespace FitnessTrackingManagementSystem
 {
     public partial class FitnessLogForm : UserControl
     {
-        private int getID = 0; // get IT to update the table
+        private int getID = 0; // get ID to update the table
 
         public FitnessLogForm()
         {
@@ -52,7 +52,7 @@ namespace FitnessTrackingManagementSystem
                         cmd.Parameters.AddWithValue("@act", fitnessLog_activity.SelectedItem);
                         cmd.Parameters.AddWithValue("@dur", Int32.Parse(fitnessLog_duration.Text.Trim()));
                         cmd.Parameters.AddWithValue("@cal", Int32.Parse(fitnessLog_calorie.Text.Trim()));
-                        cmd.Parameters.AddWithValue("@date", fitnessLog_date.Text);
+                        cmd.Parameters.AddWithValue("@date", fitnessLog_date.Value); //was .Text
                     
                         cmd.ExecuteNonQuery();
                         clearFields();
@@ -79,7 +79,10 @@ namespace FitnessTrackingManagementSystem
                 fitnessLog_activity.SelectedItem = row.Cells[1].Value.ToString();
                 fitnessLog_duration.Text = row.Cells[2].Value.ToString();
                 fitnessLog_calorie.Text = row.Cells[3].Value.ToString();
-                fitnessLog_date.Text = row.Cells[4].Value.ToString();
+
+                fitnessLog_date.Value = Convert.ToDateTime(row.Cells[4].Value.ToString());
+                // fitnessLog_date.Text = row.Cells[4].Value.ToString();
+
             }
         }
 

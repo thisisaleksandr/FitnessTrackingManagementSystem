@@ -50,7 +50,7 @@ namespace FitnessTrackingManagementSystem
                     {
                         cmd.Parameters.AddWithValue("@meal", foodLog_foodType.Text);
                         cmd.Parameters.AddWithValue("@cal", Int32.Parse(foodLog_calorie.Text.Trim()));
-                        cmd.Parameters.AddWithValue("@date", foodLog_date.Text);
+                        cmd.Parameters.AddWithValue("@date", foodLog_date.Value); //was .Text
 
                         cmd.ExecuteNonQuery();
                         clearFields();
@@ -126,7 +126,9 @@ namespace FitnessTrackingManagementSystem
 
                 foodLog_foodType.Text = row.Cells[1].Value.ToString();
                 foodLog_calorie.Text = row.Cells[2].Value.ToString();
-                foodLog_date.Text = row.Cells[3].Value.ToString();
+
+                foodLog_date.Value = Convert.ToDateTime(row.Cells[3].Value.ToString()); //mb w/o ToString()
+                //foodLog_date.Text = row.Cells[3].Value.ToString();
             }
         }
 
