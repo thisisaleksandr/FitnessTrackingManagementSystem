@@ -40,6 +40,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.calorieCalculator1 = new FitnessTrackingManagementSystem.CalorieCalculator();
             this.currentWeightForm1 = new FitnessTrackingManagementSystem.CurrentWeightForm();
             this.foodLogForm1 = new FitnessTrackingManagementSystem.FoodLogForm();
             this.fitnessLog1 = new FitnessTrackingManagementSystem.FitnessLogForm();
@@ -103,7 +104,7 @@
             this.main_historyBtn.Name = "main_historyBtn";
             this.main_historyBtn.Size = new System.Drawing.Size(220, 49);
             this.main_historyBtn.TabIndex = 6;
-            this.main_historyBtn.Text = "History";
+            this.main_historyBtn.Text = "Calorie Calculator";
             this.main_historyBtn.UseVisualStyleBackColor = false;
             // 
             // main_weightBtn
@@ -181,6 +182,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.calorieCalculator1);
             this.panel2.Controls.Add(this.currentWeightForm1);
             this.panel2.Controls.Add(this.foodLogForm1);
             this.panel2.Controls.Add(this.fitnessLog1);
@@ -190,9 +192,16 @@
             this.panel2.Size = new System.Drawing.Size(928, 744);
             this.panel2.TabIndex = 1;
             // 
+            // calorieCalculator1
+            // 
+            this.calorieCalculator1.Location = new System.Drawing.Point(0, 0);
+            this.calorieCalculator1.Name = "calorieCalculator1";
+            this.calorieCalculator1.Size = new System.Drawing.Size(928, 744);
+            this.calorieCalculator1.TabIndex = 3;
+            // 
             // currentWeightForm1
             // 
-            this.currentWeightForm1.Location = new System.Drawing.Point(0, 0);
+            this.currentWeightForm1.Location = new System.Drawing.Point(6, -3);
             this.currentWeightForm1.Name = "currentWeightForm1";
             this.currentWeightForm1.Size = new System.Drawing.Size(928, 744);
             this.currentWeightForm1.TabIndex = 2;
@@ -249,5 +258,6 @@
         private FitnessLogForm fitnessLog1;
         private FoodLogForm foodLogForm1;
         private CurrentWeightForm currentWeightForm1;
+        private CalorieCalculator calorieCalculator1;
     }
 }
