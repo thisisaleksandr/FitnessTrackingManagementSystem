@@ -36,6 +36,19 @@ namespace FitnessTrackingManagementSystem
             weekCalConsumed();
 
             dailyNet();
+            weekNet();
+
+            weightToday();
+        }
+
+        public void refreshData()
+        {
+            if(InvokeRequired)
+            {
+                Invoke((MethodInvoker)refreshData);
+                return;
+            }
+            InitializeDashboard();
         }
 
 
@@ -65,7 +78,8 @@ namespace FitnessTrackingManagementSystem
                     {
                         dashboard_calBurnedToday.Text = "0";
                     }
-                }                    
+                }
+                connect.Close();
             }
         }
         public void weekCalBurned()
@@ -98,6 +112,7 @@ namespace FitnessTrackingManagementSystem
                         dashboard_calBurnedWeek.Text = "0";
                     }
                 }
+                connect.Close();
             }
         }
 
@@ -127,6 +142,7 @@ namespace FitnessTrackingManagementSystem
                         dashboard_calConsumedToday.Text = "0";
                     }
                 }
+                connect.Close();
             }
         }
         public void weekCalConsumed()
@@ -160,6 +176,7 @@ namespace FitnessTrackingManagementSystem
                         dashboard_calConsumedWeek.Text = "0";
                     }
                 }
+                connect.Close();
             }
         }
         public void dailyNet()
@@ -168,7 +185,49 @@ namespace FitnessTrackingManagementSystem
             {
                 connect.Open();
 
-                string query = "SELECT SUM(calories) from food_log WHERE date_insert = @date_in";
+                string query = @"
+                        SELECT 
+                            ISNULL(SUM(food_log.calories), 0) - ISNULL(SUM(fitness_log.calories), 0) 
+                        FROM 
+                            food_log 
+                        LEFT JOIN 
+                            fitness_log 
+                        ON 
+                            food_log.date_insert = fitness_log.date_insert 
+                        WHERE 
+                            food_log.date_insert = @date_in";
+
+                using (SqlCommand cmd = new SqlCommand(query, connect))
+                {
+                    DateTime today = DateTime.Today;
+
+                    cmd.Parameters.AddWithValue("@date_in", today);
+
+                    object result = cmd.ExecuteScalar();
+
+                    if (result != DBNull.Value)
+                    {
+                        int todayNet = Convert.ToInt32(result);
+                        dashboard_calNetToday.Text = todayNet.ToString();
+                    }
+                    else
+                    {
+                        dashboard_calNetToday.Text = String.Format("0 / {0}", _currentUser.Calorie_goal);
+
+                        //dashboard_calNetToday.Text =  _currentUser.Username;
+                    }
+                }
+                connect.Close();
+            }
+        }
+
+        public void weekNet()
+        {
+            using (SqlConnection connect = new SqlConnection(sqlConnectionString.connectionString))
+            {
+                connect.Open();
+
+                string query = "SELECT SUM(calories) FROM food_log WHERE date_insert = @date_in";
 
                 using (SqlCommand cmd = new SqlCommand(query, connect))
                 {
@@ -181,17 +240,44 @@ namespace FitnessTrackingManagementSystem
                     if (result != DBNull.Value)
                     {
                         int todayCalCons = Convert.ToInt32(result);
-
-                        dashboard_calConsumedToday.Text = todayCalCons.ToString();
-
+                        dashboard_calNetWeek.Text = todayCalCons.ToString();
                     }
                     else
                     {
-                        dashboard_calNetToday.Text = String.Format("0 / {0}", _currentUser.Calorie_goal);
+                        dashboard_calNetWeek.Text = String.Format("0 / {0}", _currentUser.Calorie_goal);
 
                         //dashboard_calNetToday.Text =  _currentUser.Username;
                     }
                 }
+            }
+        }
+        public void weightToday()
+        {
+            using (SqlConnection connect = new SqlConnection(sqlConnectionString.connectionString))
+            {
+                connect.Open();
+
+                string query = "SELECT TOP 1 weight_value FROM weight_log ORDER BY date_insert DESC";
+
+                using (SqlCommand cmd = new SqlCommand(query, connect))
+                {
+                    // DateTime today = DateTime.Today;
+
+                    // cmd.Parameters.AddWithValue("@date_in", today);
+
+                    object result = cmd.ExecuteScalar();
+
+                    if (result != DBNull.Value)
+                    {
+                        int lastWeight = Convert.ToInt32(result);
+                        dashboard_currWeight.Text = lastWeight.ToString();
+                    }
+                    else
+                    {
+                        dashboard_currWeight.Text = "0";
+                    }
+                }
+                connect.Close();
             }
         }
     }

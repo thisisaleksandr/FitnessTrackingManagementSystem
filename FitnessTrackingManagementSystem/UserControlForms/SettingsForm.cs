@@ -16,5 +16,13 @@ namespace FitnessTrackingManagementSystem
         {
             InitializeComponent();
         }
+        public void refreshData()
+        {
+            if (InvokeRequired)
+            {
+                Invoke((MethodInvoker)refreshData);
+                return;
+            }
+        }
     }
 }

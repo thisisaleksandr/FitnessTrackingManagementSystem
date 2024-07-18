@@ -72,6 +72,13 @@ namespace FitnessTrackingManagementSystem
             settingsForm1.Visible = false;
             calorieCalculator1.Visible = false;
             currentWeightForm1.Visible = false;
+
+            Dashboard dForm = dashboard1 as Dashboard;
+
+            if(dForm != null)
+            {
+                dForm.refreshData();
+            }
         }
 
         private void main_fitnessLogBtn_Click(object sender, EventArgs e)
@@ -82,6 +89,13 @@ namespace FitnessTrackingManagementSystem
             settingsForm1.Visible = false;
             calorieCalculator1.Visible = false;
             currentWeightForm1.Visible = false;
+
+            FitnessLogForm fitForm = fitnessLog1 as FitnessLogForm;
+
+            if (fitForm != null)
+            {
+                fitForm.refreshData();
+            }
         }
 
         private void main_foodLogBtn_Click(object sender, EventArgs e)
@@ -92,6 +106,13 @@ namespace FitnessTrackingManagementSystem
             settingsForm1.Visible = false;
             calorieCalculator1.Visible = false;
             currentWeightForm1.Visible = false;
+
+            FoodLogForm foodForm = foodLogForm1 as FoodLogForm;
+
+            if (foodForm != null)
+            {
+                foodForm.refreshData();
+            }
         }
 
         private void main_weightBtn_Click(object sender, EventArgs e)
@@ -102,6 +123,13 @@ namespace FitnessTrackingManagementSystem
             settingsForm1.Visible = false;
             calorieCalculator1.Visible = false;
             currentWeightForm1.Visible = true;
+
+            CurrentWeightForm wForm = currentWeightForm1 as CurrentWeightForm;
+
+            if (wForm != null)
+            {
+                wForm.refreshData();
+            }
         }
 
         private void main_calCalcBtn_Click(object sender, EventArgs e)
@@ -112,6 +140,13 @@ namespace FitnessTrackingManagementSystem
             settingsForm1.Visible = false;
             calorieCalculator1.Visible = true;
             currentWeightForm1.Visible = false;
+
+            CalorieCalculator calcForm = calorieCalculator1 as CalorieCalculator;
+
+            if (calcForm != null)
+            {
+                calcForm.refreshData();
+            }
         }
 
         private void main_settingsBtn_Click(object sender, EventArgs e)
@@ -122,6 +157,13 @@ namespace FitnessTrackingManagementSystem
             settingsForm1.Visible = true;
             calorieCalculator1.Visible = false;
             currentWeightForm1.Visible = false;
+
+            SettingsForm setForm = settingsForm1 as SettingsForm;
+
+            if (setForm != null)
+            {
+                setForm.refreshData();
+            }
         }
     }
 }

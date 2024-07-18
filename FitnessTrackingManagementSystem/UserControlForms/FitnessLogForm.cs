@@ -21,6 +21,17 @@ namespace FitnessTrackingManagementSystem
 
             displayFitnessDataList();
         }
+
+        public void refreshData()
+        {
+            if (InvokeRequired)
+            {
+                Invoke((MethodInvoker)refreshData);
+                return;
+            }
+            displayFitnessDataList();
+        }
+
         public void displayFitnessDataList()
         {
             FitnessData fData = new FitnessData();

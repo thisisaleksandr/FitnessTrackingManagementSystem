@@ -20,6 +20,15 @@ namespace FitnessTrackingManagementSystem
             InitializeComponent();
         }
 
+        public void refreshData()
+        {
+            if (InvokeRequired)
+            {
+                Invoke((MethodInvoker)refreshData);
+                return;
+            }
+        }
+
         private void calculator_calculateBtn_Click(object sender, EventArgs e)
         {
             if (calculator_sex.SelectedIndex == -1 || calculator_heightFeet.Text == "" ||

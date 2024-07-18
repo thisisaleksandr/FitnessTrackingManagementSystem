@@ -21,6 +21,16 @@ namespace FitnessTrackingManagementSystem
             displayFoodDataList();
         }
 
+        public void refreshData()
+        {
+            if (InvokeRequired)
+            {
+                Invoke((MethodInvoker)refreshData);
+                return;
+            }
+            displayFoodDataList();
+        }
+
         public void displayFoodDataList()
         {
             FoodData fData = new FoodData();
