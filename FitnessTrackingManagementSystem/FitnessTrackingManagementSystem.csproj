@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\CurrentUserSession.cs" />
     <Compile Include="Classes\User.cs" />
     <Compile Include="UserControlForms\CalorieCalculator.cs">
       <SubType>UserControl</SubType>

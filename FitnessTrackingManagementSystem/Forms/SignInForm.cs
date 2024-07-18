@@ -77,9 +77,15 @@ namespace FitnessTrackingManagementSystem
                         {
                             int currentUserId = reader.GetInt32(reader.GetOrdinal("id"));
                             string currentUsername = reader.GetString(reader.GetOrdinal("username"));
-                            currentUser = new User(currentUserId, currentUsername);
+
+                            int bmrCalories = reader.GetInt32(reader.GetOrdinal("bmr_calories"));
+                            int calorieGoal = reader.GetInt32(reader.GetOrdinal("calorie_goal"));
+
+                            currentUser = new User(currentUserId, currentUsername, bmrCalories, calorieGoal);
                         }
+
                         reader.Close();
+
 
                         MainForm mainForm = new MainForm(currentUser);
                         mainForm.Show();

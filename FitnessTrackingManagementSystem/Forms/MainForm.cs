@@ -14,18 +14,27 @@ namespace FitnessTrackingManagementSystem
     public partial class MainForm : Form
     {
         private User _currentUser;
+
+        // default constructor (old)
+        /*
         public MainForm()
         {
             InitializeComponent();
         }
+        */
 
         public MainForm(User currentUser)
         {
             InitializeComponent();
 
             _currentUser = currentUser;
+
+            dashboard1.SetCurrentUser(currentUser);
+
             WelcomeUserChange();
+
         }
+
 
         private void WelcomeUserChange()
         {
@@ -53,11 +62,6 @@ namespace FitnessTrackingManagementSystem
 
                 this.Hide();
             }
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void main_dashboardBtn_Click(object sender, EventArgs e)

@@ -35,6 +35,7 @@
             this.foodLog_updateBtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.foodLog_foodType = new System.Windows.Forms.TextBox();
             this.foodLog_date = new System.Windows.Forms.DateTimePicker();
             this.foodLog_clearBtn = new System.Windows.Forms.Button();
             this.foodLog_addBtn = new System.Windows.Forms.Button();
@@ -42,7 +43,6 @@
             this.foodLog_calorie = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.foodLog_foodType = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -140,6 +140,14 @@
             this.panel1.Size = new System.Drawing.Size(293, 707);
             this.panel1.TabIndex = 2;
             // 
+            // foodLog_foodType
+            // 
+            this.foodLog_foodType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.foodLog_foodType.Location = new System.Drawing.Point(23, 48);
+            this.foodLog_foodType.Name = "foodLog_foodType";
+            this.foodLog_foodType.Size = new System.Drawing.Size(251, 35);
+            this.foodLog_foodType.TabIndex = 12;
+            // 
             // foodLog_date
             // 
             this.foodLog_date.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -201,9 +209,9 @@
             this.label3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(18, 132);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(175, 29);
+            this.label3.Size = new System.Drawing.Size(219, 29);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Calorie burned:";
+            this.label3.Text = "Calories consumed:";
             // 
             // label1
             // 
@@ -214,14 +222,6 @@
             this.label1.Size = new System.Drawing.Size(127, 29);
             this.label1.TabIndex = 0;
             this.label1.Text = "Food type:";
-            // 
-            // foodLog_foodType
-            // 
-            this.foodLog_foodType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.foodLog_foodType.Location = new System.Drawing.Point(23, 48);
-            this.foodLog_foodType.Name = "foodLog_foodType";
-            this.foodLog_foodType.Size = new System.Drawing.Size(251, 35);
-            this.foodLog_foodType.TabIndex = 12;
             // 
             // FoodLogForm
             // 
