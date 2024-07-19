@@ -13,7 +13,9 @@ namespace FitnessTrackingManagementSystem.Classes
         private int _bmr_calories;
         private int _calorie_goal;
 
+        public int ID { get { return _id; } }
         public string Username { get { return _username; } set { _username = value; } }
+        
         public User(int id, string user_name, int bmr_calories, int calorie_goal)
         {
             _id = id;

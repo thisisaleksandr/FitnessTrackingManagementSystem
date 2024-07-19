@@ -42,7 +42,9 @@ namespace FitnessTrackingManagementSystem
                 // calculate bmr
                 double height = int.Parse(calculator_heightFeet.Text) * 12 + int.Parse(calculator_heightInches.Text);
                 bool sex = calculator_sex.SelectedIndex == 0 ? true : false;
+                
                 var user1 = new User(1, "xyu");
+
                 int BMR = user1.CalculateBMR(int.Parse(calculator_age.Text),
                     float.Parse(calculator_weight.Text), height, sex);
 

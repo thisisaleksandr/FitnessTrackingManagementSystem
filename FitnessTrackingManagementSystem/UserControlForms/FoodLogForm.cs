@@ -8,16 +8,27 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using FitnessTrackingManagementSystem.Classes;
 
 namespace FitnessTrackingManagementSystem
 {
     public partial class FoodLogForm : UserControl
     {
         private int getID = 0; // get IT to update the table
+        private User _currentUser;
         public FoodLogForm()
         {
-            InitializeComponent();
+            InitializeComponent();            
+        }
 
+        public void SetCurrentUser(User currentUser)
+        {
+            _currentUser = currentUser;
+            InitializeFoodLog();
+        }
+
+        private void InitializeFoodLog()
+        {
             displayFoodDataList();
         }
 
@@ -33,7 +44,7 @@ namespace FitnessTrackingManagementSystem
 
         public void displayFoodDataList()
         {
-            FoodData fData = new FoodData();
+            FoodData fData = new FoodData(_currentUser);
             List<FoodData> listData = fData.foodDataList();
 
             dataGridView1.DataSource = listData;
@@ -53,11 +64,12 @@ namespace FitnessTrackingManagementSystem
                     // open connection to sql
                     connect.Open();
 
-                    string insertData = "INSERT INTO food_log (meal_name, calories, date_insert) " +
-                        "VALUES(@meal, @cal, @date)";
+                    string insertData = "INSERT INTO food_log (user_id, meal_name, calories, date_insert) " +
+                        "VALUES(@user_id, @meal, @cal, @date)";
 
                     using (SqlCommand cmd = new SqlCommand(insertData, connect))
                     {
+                        cmd.Parameters.AddWithValue("@user_id", _currentUser.ID);
                         cmd.Parameters.AddWithValue("@meal", foodLog_foodType.Text);
                         cmd.Parameters.AddWithValue("@cal", Int32.Parse(foodLog_calorie.Text.Trim()));
                         cmd.Parameters.AddWithValue("@date", foodLog_date.Value); //was .Text

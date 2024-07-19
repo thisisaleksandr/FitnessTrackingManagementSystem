@@ -17,7 +17,9 @@ CREATE TABLE fitness_log(
 	calories INT NULL,
 	date_insert DATE NULL
 )
+
 SELECT * FROM fitness_log;
+
 
 CREATE TABLE food_log(
 	id INT PRIMARY KEY IDENTITY(1,1),
@@ -35,5 +37,7 @@ CREATE TABLE weight_log(
 	weight_value VARCHAR(MAX) NULL,
 	date_insert DATE NULL
 )
+
+DROP TABLE weight_log;
 
 SELECT * FROM weight_log;

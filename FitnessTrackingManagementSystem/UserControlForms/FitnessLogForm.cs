@@ -8,17 +8,28 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using FitnessTrackingManagementSystem.Classes;
 
 namespace FitnessTrackingManagementSystem
 {
     public partial class FitnessLogForm : UserControl
     {
-        private int getID = 0; // get ID to update the table
+        private int getID = 0; // get fitness log ID to update the table
+        private User _currentUser;
 
         public FitnessLogForm()
         {
             InitializeComponent();
+            
+        }
+        public void SetCurrentUser(User currentUser)
+        {
+            _currentUser = currentUser;
+            InitializeFitnessLog();
+        }
 
+        private void InitializeFitnessLog()
+        {
             displayFitnessDataList();
         }
 
@@ -34,7 +45,7 @@ namespace FitnessTrackingManagementSystem
 
         public void displayFitnessDataList()
         {
-            FitnessData fData = new FitnessData();
+            FitnessData fData = new FitnessData(_currentUser);
             List<FitnessData> listData = fData.fitnessDataList();
 
             dataGridView1.DataSource = listData;
@@ -55,11 +66,12 @@ namespace FitnessTrackingManagementSystem
                     // open connection to sql
                     connect.Open();
 
-                    string insertData = "INSERT INTO fitness_log (activity, duration, calories, date_insert) " +
-                        "VALUES(@act, @dur, @cal, @date)";
+                    string insertData = "INSERT INTO fitness_log (user_id, activity, duration, calories, date_insert) " +
+                        "VALUES(@user_id, @act, @dur, @cal, @date)";
 
                     using (SqlCommand cmd = new SqlCommand(insertData, connect))
                     {
+                        cmd.Parameters.AddWithValue("@user_id", _currentUser.ID);
                         cmd.Parameters.AddWithValue("@act", fitnessLog_activity.SelectedItem);
                         cmd.Parameters.AddWithValue("@dur", Int32.Parse(fitnessLog_duration.Text.Trim()));
                         cmd.Parameters.AddWithValue("@cal", Int32.Parse(fitnessLog_calorie.Text.Trim()));

@@ -59,12 +59,13 @@ namespace FitnessTrackingManagementSystem
             {
                 connect.Open();
 
-                string query = "SELECT SUM(calories) from fitness_log WHERE date_insert = @date_in";
+                string query = "SELECT SUM(calories) from fitness_log WHERE date_insert = @date_in AND user_id = @user_id";
 
                 using (SqlCommand cmd = new SqlCommand(query, connect))
                 {
                     DateTime today = DateTime.Today;
 
+                    cmd.Parameters.AddWithValue("@user_id", _currentUser.ID);
                     cmd.Parameters.AddWithValue("@date_in", today);
 
                     object result = cmd.ExecuteScalar();
@@ -92,10 +93,11 @@ namespace FitnessTrackingManagementSystem
                 DateTime startWeek = DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek);
                 DateTime endWeek = startWeek.AddDays(7);
 
-                string query = $"SELECT SUM(calories) from fitness_log WHERE date_insert >= @startWeek AND date_insert <= @endWeek";
+                string query = $"SELECT SUM(calories) from fitness_log WHERE date_insert >= @startWeek AND date_insert <= @endWeek AND user_id = @user_id";
 
                 using (SqlCommand cmd = new SqlCommand(query, connect))
-                {                   
+                {
+                    cmd.Parameters.AddWithValue("@user_id", _currentUser.ID);
                     cmd.Parameters.AddWithValue("@startWeek", startWeek);
                     cmd.Parameters.AddWithValue("@endWeek", endWeek);
 
@@ -122,12 +124,13 @@ namespace FitnessTrackingManagementSystem
             {
                 connect.Open();
 
-                string query = "SELECT SUM(calories) from food_log WHERE date_insert = @date_in";
+                string query = "SELECT SUM(calories) from food_log WHERE date_insert = @date_in AND user_id = @user_id";
 
                 using (SqlCommand cmd = new SqlCommand(query, connect))
                 {
                     DateTime today = DateTime.Today;
 
+                    cmd.Parameters.AddWithValue("@user_id", _currentUser.ID);
                     cmd.Parameters.AddWithValue("@date_in", today);
 
                     object result = cmd.ExecuteScalar();
@@ -156,10 +159,11 @@ namespace FitnessTrackingManagementSystem
                 DateTime startWeek = DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek);
                 DateTime endWeek = startWeek.AddDays(7);
 
-                string query = $"SELECT SUM(calories) from food_log WHERE date_insert >= @startWeek AND date_insert <= @endWeek";
+                string query = $"SELECT SUM(calories) from food_log WHERE date_insert >= @startWeek AND date_insert <= @endWeek AND user_id = @user_id";
 
                 using (SqlCommand cmd = new SqlCommand(query, connect))
                 {
+                    cmd.Parameters.AddWithValue("@user_id", _currentUser.ID);
                     cmd.Parameters.AddWithValue("@startWeek", startWeek);
                     cmd.Parameters.AddWithValue("@endWeek", endWeek);
 
@@ -195,12 +199,13 @@ namespace FitnessTrackingManagementSystem
                         ON 
                             food_log.date_insert = fitness_log.date_insert 
                         WHERE 
-                            food_log.date_insert = @date_in";
+                            food_log.date_insert = @date_in AND food_log.user_id = @user_id";
 
                 using (SqlCommand cmd = new SqlCommand(query, connect))
                 {
                     DateTime today = DateTime.Today;
 
+                    cmd.Parameters.AddWithValue("@user_id", _currentUser.ID);
                     cmd.Parameters.AddWithValue("@date_in", today);
 
                     object result = cmd.ExecuteScalar();
@@ -227,12 +232,13 @@ namespace FitnessTrackingManagementSystem
             {
                 connect.Open();
 
-                string query = "SELECT SUM(calories) FROM food_log WHERE date_insert = @date_in";
+                string query = "SELECT SUM(calories) FROM food_log WHERE date_insert = @date_in AND user_id = @user_id";
 
                 using (SqlCommand cmd = new SqlCommand(query, connect))
                 {
                     DateTime today = DateTime.Today;
 
+                    cmd.Parameters.AddWithValue("@user_id", _currentUser.ID);
                     cmd.Parameters.AddWithValue("@date_in", today);
 
                     object result = cmd.ExecuteScalar();
@@ -257,13 +263,14 @@ namespace FitnessTrackingManagementSystem
             {
                 connect.Open();
 
-                string query = "SELECT TOP 1 weight_value FROM weight_log ORDER BY date_insert DESC";
+                string query = "SELECT TOP 1 weight_value FROM weight_log WHERE user_id = @user_id ORDER BY date_insert DESC ";
 
                 using (SqlCommand cmd = new SqlCommand(query, connect))
                 {
                     // DateTime today = DateTime.Today;
 
                     // cmd.Parameters.AddWithValue("@date_in", today);
+                    cmd.Parameters.AddWithValue("@user_id", _currentUser.ID);
 
                     object result = cmd.ExecuteScalar();
 

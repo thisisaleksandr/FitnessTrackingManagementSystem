@@ -15,14 +15,6 @@ namespace FitnessTrackingManagementSystem
     {
         private User _currentUser;
 
-        // default constructor (old)
-        /*
-        public MainForm()
-        {
-            InitializeComponent();
-        }
-        */
-
         public MainForm(User currentUser)
         {
             InitializeComponent();
@@ -30,9 +22,10 @@ namespace FitnessTrackingManagementSystem
             _currentUser = currentUser;
 
             dashboard1.SetCurrentUser(currentUser);
+            fitnessLog1.SetCurrentUser(currentUser);
+            foodLogForm1.SetCurrentUser(currentUser);
 
             WelcomeUserChange();
-
         }
 
 
