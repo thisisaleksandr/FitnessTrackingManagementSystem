@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.calculator_heightInches = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.calculator_weightGoal = new System.Windows.Forms.ComboBox();
             this.settings_weightLossGoal = new System.Windows.Forms.Label();
             this.calculator_clearBtn = new System.Windows.Forms.Button();
@@ -51,9 +54,6 @@
             this.calculator_bmr = new System.Windows.Forms.Label();
             this.calculator_setAsNewBtn = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.calculator_heightInches = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -83,6 +83,35 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(460, 716);
             this.panel1.TabIndex = 4;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(374, 193);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(79, 29);
+            this.label4.TabIndex = 29;
+            this.label4.Text = "inches";
+            // 
+            // calculator_heightInches
+            // 
+            this.calculator_heightInches.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.calculator_heightInches.Location = new System.Drawing.Point(229, 191);
+            this.calculator_heightInches.Name = "calculator_heightInches";
+            this.calculator_heightInches.Size = new System.Drawing.Size(139, 35);
+            this.calculator_heightInches.TabIndex = 28;
+            this.calculator_heightInches.Text = "0";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(168, 193);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(55, 29);
+            this.label3.TabIndex = 27;
+            this.label3.Text = "feet";
             // 
             // calculator_weightGoal
             // 
@@ -311,6 +340,7 @@
             this.calculator_setAsNewBtn.TabIndex = 9;
             this.calculator_setAsNewBtn.Text = "Set this as a new settings";
             this.calculator_setAsNewBtn.UseVisualStyleBackColor = false;
+            this.calculator_setAsNewBtn.Click += new System.EventHandler(this.calculator_setAsNewBtn_Click);
             // 
             // label12
             // 
@@ -321,35 +351,6 @@
             this.label12.Size = new System.Drawing.Size(100, 29);
             this.label12.TabIndex = 0;
             this.label12.Text = "Results";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(168, 193);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 29);
-            this.label3.TabIndex = 27;
-            this.label3.Text = "feet";
-            // 
-            // calculator_heightInches
-            // 
-            this.calculator_heightInches.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.calculator_heightInches.Location = new System.Drawing.Point(229, 191);
-            this.calculator_heightInches.Name = "calculator_heightInches";
-            this.calculator_heightInches.Size = new System.Drawing.Size(139, 35);
-            this.calculator_heightInches.TabIndex = 28;
-            this.calculator_heightInches.Text = "0";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(374, 193);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(79, 29);
-            this.label4.TabIndex = 29;
-            this.label4.Text = "inches";
             // 
             // CalorieCalculator
             // 

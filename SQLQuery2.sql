@@ -34,7 +34,7 @@ SELECT * FROM food_log;
 CREATE TABLE weight_log(
 	id INT PRIMARY KEY IDENTITY(1,1),
 	user_id INT,
-	weight_value VARCHAR(MAX) NULL,
+	weight_value FLOAT,
 	date_insert DATE NULL
 )
 

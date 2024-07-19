@@ -32,7 +32,6 @@ namespace FitnessTrackingManagementSystem.Classes
             _calorie_goal = 200;
         }
 
-
         public int CalculateBMR(int age, double weight, double height, bool male)
         {
             double bmr;

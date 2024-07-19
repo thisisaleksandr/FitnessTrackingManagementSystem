@@ -24,10 +24,12 @@ namespace FitnessTrackingManagementSystem
             dashboard1.SetCurrentUser(currentUser);
             fitnessLog1.SetCurrentUser(currentUser);
             foodLogForm1.SetCurrentUser(currentUser);
+            currentWeightForm1.SetCurrentUser(currentUser);
+            calorieCalculator1.SetCurrentUser(currentUser);
+            settingsForm1.SetCurrentUser(currentUser);
 
             WelcomeUserChange();
         }
-
 
         private void WelcomeUserChange()
         {

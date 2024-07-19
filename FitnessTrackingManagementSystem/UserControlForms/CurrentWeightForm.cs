@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FitnessTrackingManagementSystem.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,10 +15,20 @@ namespace FitnessTrackingManagementSystem
     public partial class CurrentWeightForm : UserControl
     {
         private int getID = 0;
+        private User _currentUser;
+
         public CurrentWeightForm()
         {
             InitializeComponent();
+        }
+        public void SetCurrentUser(User currentUser)
+        {
+            _currentUser = currentUser;
+            InitializeWeightLog();
+        }
 
+        private void InitializeWeightLog()
+        {
             displayWeightDataList();
         }
 
@@ -33,7 +44,7 @@ namespace FitnessTrackingManagementSystem
 
         public void displayWeightDataList()
         {
-            WeightData wData = new WeightData();
+            WeightData wData = new WeightData(_currentUser);
             List<WeightData> listData = wData.weightDataList();
 
             dataGridView1.DataSource = listData;
@@ -53,19 +64,19 @@ namespace FitnessTrackingManagementSystem
                     // open connection to sql
                     connect.Open();
 
-                    string insertData = "INSERT INTO weight_log (weight_value, date_insert) " +
-                        "VALUES(@weight, @date)";
+                    string insertData = "INSERT INTO weight_log (user_id, weight_value, date_insert) " +
+                        "VALUES(@user_id, @weight, @date)";
 
                     using (SqlCommand cmd = new SqlCommand(insertData, connect))
                     {
-                        cmd.Parameters.AddWithValue("@weight", double.Parse(currWeight_weight.Text.Trim()));
-                        cmd.Parameters.AddWithValue("@date", currWeight_date.Text);
+                        cmd.Parameters.AddWithValue("@user_id", _currentUser.ID);
+                        cmd.Parameters.AddWithValue("@weight", Convert.ToDouble(currWeight_weight.Text));
+                        cmd.Parameters.AddWithValue("@date", DateTime.Parse(currWeight_date.Text));
 
                         cmd.ExecuteNonQuery();
                         clearFields();
 
                         MessageBox.Show("Added successfully", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                     }
                     connect.Close();
 

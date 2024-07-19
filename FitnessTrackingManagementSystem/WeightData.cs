@@ -5,14 +5,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using FitnessTrackingManagementSystem.Classes;
 
 namespace FitnessTrackingManagementSystem
 {
     class WeightData
     {
         public int ID { set; get; }
-        public double Weight { set; get; }
+        public float Weight { set; get; }
         public string Date { set; get; }
+
+        private User _current_user;
+
+        public WeightData(User curr_user)
+        {
+            _current_user = curr_user;
+        }
 
         public List<WeightData> weightDataList()
         {
@@ -22,20 +30,23 @@ namespace FitnessTrackingManagementSystem
             {
                 connect.Open();
 
-                string selectData = "SELECT * FROM weight_log";
+                string selectData = "SELECT * FROM weight_log WHERE user_id = @userid";
 
                 using (SqlCommand cmd = new SqlCommand(selectData, connect))
                 {
+                    cmd.Parameters.AddWithValue("@userid", _current_user.ID);
+                    cmd.ExecuteNonQuery();
+
                     // create a data reader
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())
                     {
                         // read the data and store it in the class
-                        WeightData wData = new WeightData();
-                        wData.ID = (int)reader["id"];
-                        wData.Weight = (double)reader["weight_value"];
-                        wData.Date = ((DateTime)reader["date_insert"]).ToString("MM-dd-yyyy");
+                        WeightData wData = new WeightData(_current_user);
+                        wData.ID = reader.GetInt32(reader.GetOrdinal("id"));
+                        wData.Weight = (float)reader.GetDouble(reader.GetOrdinal("weight_value"));
+                        wData.Date = reader.GetDateTime(reader.GetOrdinal("date_insert")).ToString("MM-dd-yyyy");
 
                         listData.Add(wData);
 

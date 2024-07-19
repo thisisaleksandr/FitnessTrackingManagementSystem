@@ -88,6 +88,7 @@
             this.settings_updateCaloricNeedsBtn.TabIndex = 9;
             this.settings_updateCaloricNeedsBtn.Text = "Update Dialy Caloric Needs";
             this.settings_updateCaloricNeedsBtn.UseVisualStyleBackColor = false;
+            this.settings_updateCaloricNeedsBtn.Click += new System.EventHandler(this.settings_updateCaloricNeedsBtn_Click);
             // 
             // panel2
             // 
@@ -193,15 +194,16 @@
             this.settings_updateGoalBtn.TabIndex = 9;
             this.settings_updateGoalBtn.Text = "Update Goal";
             this.settings_updateGoalBtn.UseVisualStyleBackColor = false;
+            this.settings_updateGoalBtn.Click += new System.EventHandler(this.settings_updateGoalBtn_Click);
             // 
-            // Settings
+            // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Name = "Settings";
+            this.Name = "SettingsForm";
             this.Size = new System.Drawing.Size(928, 744);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

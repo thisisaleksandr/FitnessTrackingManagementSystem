@@ -19,8 +19,7 @@ namespace FitnessTrackingManagementSystem
 
         public FitnessLogForm()
         {
-            InitializeComponent();
-            
+            InitializeComponent(); 
         }
         public void SetCurrentUser(User currentUser)
         {
