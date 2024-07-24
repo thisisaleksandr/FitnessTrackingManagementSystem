@@ -64,22 +64,16 @@ namespace FitnessTrackingManagementSystem
                 {
                         try
                         {
-                            // opens a database connection 
                             connect.Open();
 
-                            // @usern is a parametr in the query
                             string selectUsername = "SELECT * FROM users WHERE username = @usern";
                             
-                            // check if the username is already in the database
                             using (SqlCommand checkUser = new SqlCommand(selectUsername, connect))
                             {
                                 checkUser.Parameters.AddWithValue("@usern", register_username.Text.Trim());
 
-                                // create adapter to work with data in db
                                 SqlDataAdapter adapter = new SqlDataAdapter(checkUser);
-                                // create a table
                                 DataTable table = new DataTable();
-
                                 adapter.Fill(table);
 
                                 if (table.Rows.Count != 0)
@@ -114,20 +108,17 @@ namespace FitnessTrackingManagementSystem
                                         loginForm.Show();
 
                                         this.Hide();
-                                    
-
                                     }
                                 }
                             }
                         }catch (Exception ex)
                         {
                         MessageBox.Show("Failed connection to Database: " + ex, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                        }
                         finally
                         {
                             connect.Close();
                         }
-                
                 }
             }
         }

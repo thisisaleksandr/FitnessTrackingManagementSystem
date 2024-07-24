@@ -32,34 +32,34 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
+            this.dashboard_calNetToday = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.dashboard_calConsumedToday = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.dashboard_calBurnedToday = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.dashboard_calNetWeek = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.panel12 = new System.Windows.Forms.Panel();
+            this.dashboard_calConsumedWeek = new System.Windows.Forms.Label();
             this.panel13 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.panel14 = new System.Windows.Forms.Panel();
+            this.dashboard_calBurnedWeek = new System.Windows.Forms.Label();
             this.panel15 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.panel16 = new System.Windows.Forms.Panel();
+            this.dashboard_currWeight = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.dashboard_calBurnedToday = new System.Windows.Forms.Label();
-            this.dashboard_calConsumedToday = new System.Windows.Forms.Label();
-            this.dashboard_calNetToday = new System.Windows.Forms.Label();
-            this.dashboard_calBurnedWeek = new System.Windows.Forms.Label();
-            this.dashboard_calConsumedWeek = new System.Windows.Forms.Label();
-            this.dashboard_calNetWeek = new System.Windows.Forms.Label();
-            this.dashboard_currWeight = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel11.SuspendLayout();
@@ -105,11 +105,11 @@
             this.label3.BackColor = System.Drawing.Color.Indigo;
             this.label3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(56, 25);
+            this.label3.Location = new System.Drawing.Point(21, 25);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(141, 29);
+            this.label3.Size = new System.Drawing.Size(214, 29);
             this.label3.TabIndex = 3;
-            this.label3.Text = "Net Calories";
+            this.label3.Text = "Calorie Deficit Goal";
             // 
             // panel11
             // 
@@ -119,6 +119,16 @@
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(244, 65);
             this.panel11.TabIndex = 1;
+            // 
+            // dashboard_calNetToday
+            // 
+            this.dashboard_calNetToday.AutoSize = true;
+            this.dashboard_calNetToday.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dashboard_calNetToday.Location = new System.Drawing.Point(75, 20);
+            this.dashboard_calNetToday.Name = "dashboard_calNetToday";
+            this.dashboard_calNetToday.Size = new System.Drawing.Size(26, 29);
+            this.dashboard_calNetToday.TabIndex = 2;
+            this.dashboard_calNetToday.Text = "0";
             // 
             // panel3
             // 
@@ -151,6 +161,16 @@
             this.panel10.Size = new System.Drawing.Size(244, 65);
             this.panel10.TabIndex = 1;
             // 
+            // dashboard_calConsumedToday
+            // 
+            this.dashboard_calConsumedToday.AutoSize = true;
+            this.dashboard_calConsumedToday.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dashboard_calConsumedToday.Location = new System.Drawing.Point(75, 20);
+            this.dashboard_calConsumedToday.Name = "dashboard_calConsumedToday";
+            this.dashboard_calConsumedToday.Size = new System.Drawing.Size(26, 29);
+            this.dashboard_calConsumedToday.TabIndex = 1;
+            this.dashboard_calConsumedToday.Text = "0";
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Indigo;
@@ -182,6 +202,16 @@
             this.panel9.Size = new System.Drawing.Size(244, 65);
             this.panel9.TabIndex = 0;
             // 
+            // dashboard_calBurnedToday
+            // 
+            this.dashboard_calBurnedToday.AutoSize = true;
+            this.dashboard_calBurnedToday.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dashboard_calBurnedToday.Location = new System.Drawing.Point(75, 20);
+            this.dashboard_calBurnedToday.Name = "dashboard_calBurnedToday";
+            this.dashboard_calBurnedToday.Size = new System.Drawing.Size(26, 29);
+            this.dashboard_calBurnedToday.TabIndex = 0;
+            this.dashboard_calBurnedToday.Text = "0";
+            // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.White;
@@ -203,18 +233,6 @@
             this.panel6.Size = new System.Drawing.Size(250, 150);
             this.panel6.TabIndex = 1;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Indigo;
-            this.label4.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(56, 25);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(141, 29);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Net Calories";
-            // 
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.White;
@@ -223,6 +241,16 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(244, 65);
             this.panel7.TabIndex = 1;
+            // 
+            // dashboard_calNetWeek
+            // 
+            this.dashboard_calNetWeek.AutoSize = true;
+            this.dashboard_calNetWeek.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dashboard_calNetWeek.Location = new System.Drawing.Point(75, 20);
+            this.dashboard_calNetWeek.Name = "dashboard_calNetWeek";
+            this.dashboard_calNetWeek.Size = new System.Drawing.Size(26, 29);
+            this.dashboard_calNetWeek.TabIndex = 5;
+            this.dashboard_calNetWeek.Text = "0";
             // 
             // panel8
             // 
@@ -255,6 +283,16 @@
             this.panel12.Size = new System.Drawing.Size(244, 65);
             this.panel12.TabIndex = 1;
             // 
+            // dashboard_calConsumedWeek
+            // 
+            this.dashboard_calConsumedWeek.AutoSize = true;
+            this.dashboard_calConsumedWeek.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dashboard_calConsumedWeek.Location = new System.Drawing.Point(75, 20);
+            this.dashboard_calConsumedWeek.Name = "dashboard_calConsumedWeek";
+            this.dashboard_calConsumedWeek.Size = new System.Drawing.Size(26, 29);
+            this.dashboard_calConsumedWeek.TabIndex = 4;
+            this.dashboard_calConsumedWeek.Text = "0";
+            // 
             // panel13
             // 
             this.panel13.BackColor = System.Drawing.Color.Indigo;
@@ -285,6 +323,16 @@
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(244, 65);
             this.panel14.TabIndex = 0;
+            // 
+            // dashboard_calBurnedWeek
+            // 
+            this.dashboard_calBurnedWeek.AutoSize = true;
+            this.dashboard_calBurnedWeek.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dashboard_calBurnedWeek.Location = new System.Drawing.Point(75, 20);
+            this.dashboard_calBurnedWeek.Name = "dashboard_calBurnedWeek";
+            this.dashboard_calBurnedWeek.Size = new System.Drawing.Size(26, 29);
+            this.dashboard_calBurnedWeek.TabIndex = 3;
+            this.dashboard_calBurnedWeek.Text = "0";
             // 
             // panel15
             // 
@@ -317,6 +365,16 @@
             this.panel16.Size = new System.Drawing.Size(244, 53);
             this.panel16.TabIndex = 2;
             // 
+            // dashboard_currWeight
+            // 
+            this.dashboard_currWeight.AutoSize = true;
+            this.dashboard_currWeight.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dashboard_currWeight.Location = new System.Drawing.Point(78, 13);
+            this.dashboard_currWeight.Name = "dashboard_currWeight";
+            this.dashboard_currWeight.Size = new System.Drawing.Size(26, 29);
+            this.dashboard_currWeight.TabIndex = 6;
+            this.dashboard_currWeight.Text = "0";
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -341,75 +399,17 @@
             this.label9.TabIndex = 4;
             this.label9.Text = "Week Summary";
             // 
-            // dashboard_calBurnedToday
+            // label4
             // 
-            this.dashboard_calBurnedToday.AutoSize = true;
-            this.dashboard_calBurnedToday.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dashboard_calBurnedToday.Location = new System.Drawing.Point(75, 20);
-            this.dashboard_calBurnedToday.Name = "dashboard_calBurnedToday";
-            this.dashboard_calBurnedToday.Size = new System.Drawing.Size(26, 29);
-            this.dashboard_calBurnedToday.TabIndex = 0;
-            this.dashboard_calBurnedToday.Text = "0";
-            // 
-            // dashboard_calConsumedToday
-            // 
-            this.dashboard_calConsumedToday.AutoSize = true;
-            this.dashboard_calConsumedToday.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dashboard_calConsumedToday.Location = new System.Drawing.Point(75, 20);
-            this.dashboard_calConsumedToday.Name = "dashboard_calConsumedToday";
-            this.dashboard_calConsumedToday.Size = new System.Drawing.Size(26, 29);
-            this.dashboard_calConsumedToday.TabIndex = 1;
-            this.dashboard_calConsumedToday.Text = "0";
-            // 
-            // dashboard_calNetToday
-            // 
-            this.dashboard_calNetToday.AutoSize = true;
-            this.dashboard_calNetToday.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dashboard_calNetToday.Location = new System.Drawing.Point(75, 20);
-            this.dashboard_calNetToday.Name = "dashboard_calNetToday";
-            this.dashboard_calNetToday.Size = new System.Drawing.Size(26, 29);
-            this.dashboard_calNetToday.TabIndex = 2;
-            this.dashboard_calNetToday.Text = "0";
-            // 
-            // dashboard_calBurnedWeek
-            // 
-            this.dashboard_calBurnedWeek.AutoSize = true;
-            this.dashboard_calBurnedWeek.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dashboard_calBurnedWeek.Location = new System.Drawing.Point(75, 20);
-            this.dashboard_calBurnedWeek.Name = "dashboard_calBurnedWeek";
-            this.dashboard_calBurnedWeek.Size = new System.Drawing.Size(26, 29);
-            this.dashboard_calBurnedWeek.TabIndex = 3;
-            this.dashboard_calBurnedWeek.Text = "0";
-            // 
-            // dashboard_calConsumedWeek
-            // 
-            this.dashboard_calConsumedWeek.AutoSize = true;
-            this.dashboard_calConsumedWeek.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dashboard_calConsumedWeek.Location = new System.Drawing.Point(75, 20);
-            this.dashboard_calConsumedWeek.Name = "dashboard_calConsumedWeek";
-            this.dashboard_calConsumedWeek.Size = new System.Drawing.Size(26, 29);
-            this.dashboard_calConsumedWeek.TabIndex = 4;
-            this.dashboard_calConsumedWeek.Text = "0";
-            // 
-            // dashboard_calNetWeek
-            // 
-            this.dashboard_calNetWeek.AutoSize = true;
-            this.dashboard_calNetWeek.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dashboard_calNetWeek.Location = new System.Drawing.Point(75, 20);
-            this.dashboard_calNetWeek.Name = "dashboard_calNetWeek";
-            this.dashboard_calNetWeek.Size = new System.Drawing.Size(26, 29);
-            this.dashboard_calNetWeek.TabIndex = 5;
-            this.dashboard_calNetWeek.Text = "0";
-            // 
-            // dashboard_currWeight
-            // 
-            this.dashboard_currWeight.AutoSize = true;
-            this.dashboard_currWeight.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dashboard_currWeight.Location = new System.Drawing.Point(78, 13);
-            this.dashboard_currWeight.Name = "dashboard_currWeight";
-            this.dashboard_currWeight.Size = new System.Drawing.Size(26, 29);
-            this.dashboard_currWeight.TabIndex = 6;
-            this.dashboard_currWeight.Text = "0";
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Indigo;
+            this.label4.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(21, 25);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(214, 29);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Calorie Deficit Goal";
             // 
             // Dashboard
             // 
@@ -471,7 +471,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Label label5;
@@ -491,5 +490,6 @@
         private System.Windows.Forms.Label dashboard_calConsumedWeek;
         private System.Windows.Forms.Label dashboard_calBurnedWeek;
         private System.Windows.Forms.Label dashboard_currWeight;
+        private System.Windows.Forms.Label label4;
     }
 }

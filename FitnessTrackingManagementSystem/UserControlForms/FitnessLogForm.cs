@@ -83,7 +83,6 @@ namespace FitnessTrackingManagementSystem
 
                     }
                     connect.Close();
-
                 }
             }
             displayFitnessDataList(); // update table

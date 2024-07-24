@@ -16,6 +16,12 @@ namespace FitnessTrackingManagementSystem
     {
         private User _currentUser;
 
+        private int dailyCalBurnedValue = 0;
+        private int dailyCalConsumedValue = 0;
+
+        private int weekCalBurnedValue = 0;
+        private int weekCalConsumedValue = 0;
+
         public Dashboard()
         {
             InitializeComponent();
@@ -74,6 +80,7 @@ namespace FitnessTrackingManagementSystem
                     {
                         int todayCal = Convert.ToInt32(result);
                         dashboard_calBurnedToday.Text = todayCal.ToString();
+                        dailyCalBurnedValue = todayCal;
                     }
                     else
                     {
@@ -106,7 +113,7 @@ namespace FitnessTrackingManagementSystem
                     if (result != DBNull.Value)
                     {
                         int weekCal = Convert.ToInt32(result);
-
+                        weekCalBurnedValue = weekCal;
                         dashboard_calBurnedWeek.Text = weekCal.ToString();
                     }
                     else
@@ -139,6 +146,7 @@ namespace FitnessTrackingManagementSystem
                     {
                         int todayCalCons = Convert.ToInt32(result);
                         dashboard_calConsumedToday.Text = todayCalCons.ToString();
+                        dailyCalConsumedValue = todayCalCons;
                     }
                     else
                     {
@@ -172,7 +180,7 @@ namespace FitnessTrackingManagementSystem
                     if (result != DBNull.Value)
                     {
                         int weekCal = Convert.ToInt32(result);
-
+                        weekCalConsumedValue = weekCal;
                         dashboard_calConsumedWeek.Text = weekCal.ToString();
                     }
                     else
@@ -185,77 +193,17 @@ namespace FitnessTrackingManagementSystem
         }
         public void dailyNet()
         {
-            using (SqlConnection connect = new SqlConnection(sqlConnectionString.connectionString))
-            {
-                connect.Open();
-
-                string query = @"
-                        SELECT 
-                            ISNULL(SUM(food_log.calories), 0) - ISNULL(SUM(fitness_log.calories), 0) 
-                        FROM 
-                            food_log 
-                        LEFT JOIN 
-                            fitness_log 
-                        ON 
-                            food_log.date_insert = fitness_log.date_insert 
-                        WHERE 
-                            food_log.date_insert = @date_in AND food_log.user_id = @user_id";
-
-                using (SqlCommand cmd = new SqlCommand(query, connect))
-                {
-                    DateTime today = DateTime.Today;
-
-                    cmd.Parameters.AddWithValue("@user_id", _currentUser.ID);
-                    cmd.Parameters.AddWithValue("@date_in", today);
-
-                    object result = cmd.ExecuteScalar();
-
-                    if (result != DBNull.Value)
-                    {
-                        int todayNet = Convert.ToInt32(result);
-                        dashboard_calNetToday.Text = todayNet.ToString();
-                    }
-                    else
-                    {
-                        dashboard_calNetToday.Text = String.Format("0 / {0}", _currentUser.Calorie_goal);
-
-                        //dashboard_calNetToday.Text =  _currentUser.Username;
-                    }
-                }
-                connect.Close();
-            }
+            dashboard_calNetToday.Text = String.Format("{0} / {1}", (-1*(dailyCalConsumedValue - dailyCalBurnedValue - _currentUser.Bmr_calories)).ToString(), _currentUser.Calorie_goal);
         }
 
         public void weekNet()
         {
-            using (SqlConnection connect = new SqlConnection(sqlConnectionString.connectionString))
-            {
-                connect.Open();
+            DayOfWeek startOfWeek = DayOfWeek.Sunday;
 
-                string query = "SELECT SUM(calories) FROM food_log WHERE date_insert = @date_in AND user_id = @user_id";
+            // Calculate the difference in days from the start of the week
+            int daysSinceWeekStart = ((int)DateTime.Now.DayOfWeek - (int)startOfWeek + 7) % 7 + 1;
 
-                using (SqlCommand cmd = new SqlCommand(query, connect))
-                {
-                    DateTime today = DateTime.Today;
-
-                    cmd.Parameters.AddWithValue("@user_id", _currentUser.ID);
-                    cmd.Parameters.AddWithValue("@date_in", today);
-
-                    object result = cmd.ExecuteScalar();
-
-                    if (result != DBNull.Value)
-                    {
-                        int todayCalCons = Convert.ToInt32(result);
-                        dashboard_calNetWeek.Text = todayCalCons.ToString();
-                    }
-                    else
-                    {
-                        dashboard_calNetWeek.Text = String.Format("0 / {0}", _currentUser.Calorie_goal);
-
-                        //dashboard_calNetToday.Text =  _currentUser.Username;
-                    }
-                }
-            }
+            dashboard_calNetWeek.Text = String.Format("{0} / {1}", (-1 * (weekCalConsumedValue - weekCalBurnedValue - _currentUser.Bmr_calories* daysSinceWeekStart)).ToString(), _currentUser.Calorie_goal*7);
         }
         public void weightToday()
         {

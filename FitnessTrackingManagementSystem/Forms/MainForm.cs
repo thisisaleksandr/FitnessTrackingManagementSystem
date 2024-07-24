@@ -14,13 +14,13 @@ namespace FitnessTrackingManagementSystem
     public partial class MainForm : Form
     {
         private User _currentUser;
-
         public MainForm(User currentUser)
         {
             InitializeComponent();
 
             _currentUser = currentUser;
 
+            // pass user class to all control forms
             dashboard1.SetCurrentUser(currentUser);
             fitnessLog1.SetCurrentUser(currentUser);
             foodLogForm1.SetCurrentUser(currentUser);
@@ -30,7 +30,8 @@ namespace FitnessTrackingManagementSystem
 
             WelcomeUserChange();
         }
-
+        
+        // show "welcome" and then user's name in main menu
         private void WelcomeUserChange()
         {
             main_welcome.Text = String.Format("Welcome,\n{0}!", _currentUser.Username);
@@ -43,7 +44,6 @@ namespace FitnessTrackingManagementSystem
             {
                 e.Cancel = true;
             }
-
         }
 
         private void main_logoutBtn_Click(object sender, EventArgs e)
@@ -52,21 +52,25 @@ namespace FitnessTrackingManagementSystem
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 SignInForm form1 = new SignInForm();
-
                 form1.Show();
-
                 this.Hide();
             }
         }
 
-        private void main_dashboardBtn_Click(object sender, EventArgs e)
+        private void hideAllForms()
         {
-            dashboard1.Visible = true;
+            dashboard1.Visible = false;
             fitnessLog1.Visible = false;
             foodLogForm1.Visible = false;
             settingsForm1.Visible = false;
             calorieCalculator1.Visible = false;
             currentWeightForm1.Visible = false;
+        }
+
+        private void main_dashboardBtn_Click(object sender, EventArgs e)
+        {
+            hideAllForms();
+            dashboard1.Visible = true;
 
             Dashboard dForm = dashboard1 as Dashboard;
 
@@ -78,12 +82,8 @@ namespace FitnessTrackingManagementSystem
 
         private void main_fitnessLogBtn_Click(object sender, EventArgs e)
         {
-            dashboard1.Visible = false;
+            hideAllForms();
             fitnessLog1.Visible = true;
-            foodLogForm1.Visible = false;
-            settingsForm1.Visible = false;
-            calorieCalculator1.Visible = false;
-            currentWeightForm1.Visible = false;
 
             FitnessLogForm fitForm = fitnessLog1 as FitnessLogForm;
 
@@ -95,12 +95,8 @@ namespace FitnessTrackingManagementSystem
 
         private void main_foodLogBtn_Click(object sender, EventArgs e)
         {
-            dashboard1.Visible = false;
-            fitnessLog1.Visible = false;
+            hideAllForms();
             foodLogForm1.Visible = true;
-            settingsForm1.Visible = false;
-            calorieCalculator1.Visible = false;
-            currentWeightForm1.Visible = false;
 
             FoodLogForm foodForm = foodLogForm1 as FoodLogForm;
 
@@ -112,11 +108,7 @@ namespace FitnessTrackingManagementSystem
 
         private void main_weightBtn_Click(object sender, EventArgs e)
         {
-            dashboard1.Visible = false;
-            fitnessLog1.Visible = false;
-            foodLogForm1.Visible = false;
-            settingsForm1.Visible = false;
-            calorieCalculator1.Visible = false;
+            hideAllForms();
             currentWeightForm1.Visible = true;
 
             CurrentWeightForm wForm = currentWeightForm1 as CurrentWeightForm;
@@ -129,12 +121,8 @@ namespace FitnessTrackingManagementSystem
 
         private void main_calCalcBtn_Click(object sender, EventArgs e)
         {
-            dashboard1.Visible = false;
-            fitnessLog1.Visible = false;
-            foodLogForm1.Visible = false;
-            settingsForm1.Visible = false;
+            hideAllForms();
             calorieCalculator1.Visible = true;
-            currentWeightForm1.Visible = false;
 
             CalorieCalculator calcForm = calorieCalculator1 as CalorieCalculator;
 
@@ -146,12 +134,8 @@ namespace FitnessTrackingManagementSystem
 
         private void main_settingsBtn_Click(object sender, EventArgs e)
         {
-            dashboard1.Visible = false;
-            fitnessLog1.Visible = false;
-            foodLogForm1.Visible = false;
+            hideAllForms();
             settingsForm1.Visible = true;
-            calorieCalculator1.Visible = false;
-            currentWeightForm1.Visible = false;
 
             SettingsForm setForm = settingsForm1 as SettingsForm;
 

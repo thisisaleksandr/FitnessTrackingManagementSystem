@@ -31,7 +31,6 @@ namespace FitnessTrackingManagementSystem
             if(MessageBox.Show("Are you sure you want to exit?", "Confirmation Message",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No){
                 e.Cancel = true;
-                //Application.Exit();
             }
         }
 
@@ -48,24 +47,22 @@ namespace FitnessTrackingManagementSystem
                 // open session to SQL server
                 connect.Open();
 
-                // SQL command in the string. To retrieve data if user's username and password matched
+                // SQL query to retrieve data if the user's username and password matched
                 string selectData = "SELECT * FROM users WHERE username = @usern AND password = @pass";
 
                 // create a new command to execute: selectData - command, connect - reference to a SQlConnection object
                 using (SqlCommand cmd = new SqlCommand(selectData, connect))
                 {
-                    // add value to the end of the SqlParameterCollection
+
                     cmd.Parameters.AddWithValue("@usern", login_username.Text.Trim());
                     cmd.Parameters.AddWithValue("@pass", login_password.Text.Trim());
 
-                    // bridge between datatable and the database
                     SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                     DataTable table = new DataTable(); 
 
-                    // execute the command, fetch the results and fill the table with retrieved data
                     adapter.Fill(table);
 
-                    // check if such username and password exist in database
+                    // check if username and password are already exist in the database
                     if(table.Rows.Count > 0)
                     {
                         MessageBox.Show("Login Successfully!", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -77,16 +74,15 @@ namespace FitnessTrackingManagementSystem
                         {
                             int currentUserId = reader.GetInt32(reader.GetOrdinal("id"));
                             string currentUsername = reader.GetString(reader.GetOrdinal("username"));
-
                             int bmrCalories = reader.GetInt32(reader.GetOrdinal("bmr_calories"));
                             int calorieGoal = reader.GetInt32(reader.GetOrdinal("calorie_goal"));
 
+                            // create user class based on retrieved data
                             currentUser = new User(currentUserId, currentUsername, bmrCalories, calorieGoal);
                         }
-
                         reader.Close();
 
-
+                        // create main form and pass user class
                         MainForm mainForm = new MainForm(currentUser);
                         mainForm.Show();
                         this.Hide();
@@ -96,7 +92,7 @@ namespace FitnessTrackingManagementSystem
                         MessageBox.Show("Incorrect username/password!", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                }
+            }
         }
     }
 }
