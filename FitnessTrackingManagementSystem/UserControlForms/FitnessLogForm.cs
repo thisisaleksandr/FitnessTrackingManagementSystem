@@ -26,7 +26,6 @@ namespace FitnessTrackingManagementSystem
             _currentUser = currentUser;
             InitializeFitnessLog();
         }
-
         private void InitializeFitnessLog()
         {
             displayFitnessDataList();

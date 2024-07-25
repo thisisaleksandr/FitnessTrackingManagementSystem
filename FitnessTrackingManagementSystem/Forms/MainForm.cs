@@ -20,7 +20,7 @@ namespace FitnessTrackingManagementSystem
 
             _currentUser = currentUser;
 
-            // pass user class to all control forms
+            // pass the user class to all control forms
             dashboard1.SetCurrentUser(currentUser);
             fitnessLog1.SetCurrentUser(currentUser);
             foodLogForm1.SetCurrentUser(currentUser);

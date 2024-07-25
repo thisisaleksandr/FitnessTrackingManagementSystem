@@ -46,7 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\DailySummary.cs" />
+    <Compile Include="Classes\Summary.cs" />
     <Compile Include="Classes\User.cs" />
+    <Compile Include="Classes\WeekSummary.cs" />
     <Compile Include="UserControlForms\CalorieCalculator.cs">
       <SubType>UserControl</SubType>
     </Compile>

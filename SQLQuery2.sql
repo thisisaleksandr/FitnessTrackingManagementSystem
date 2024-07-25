@@ -9,7 +9,6 @@
 
 SELECT * FROM users;
 
-
 CREATE TABLE fitness_log(
 	id INT PRIMARY KEY IDENTITY(1,1),
 	user_id INT,

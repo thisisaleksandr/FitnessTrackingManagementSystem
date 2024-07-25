@@ -14,6 +14,9 @@ namespace FitnessTrackingManagementSystem
 {
     public partial class Dashboard : UserControl
     {
+
+        private DailySummary _dailySummary = new DailySummary();
+        private WeekSummary _weekSummary = new WeekSummary();
         private User _currentUser;
 
         private int dailyCalBurnedValue = 0;
@@ -35,6 +38,9 @@ namespace FitnessTrackingManagementSystem
 
         private void InitializeDashboard()
         {
+            _dailySummary.UpdateData(_currentUser);
+            _weekSummary.UpdateData(_currentUser);
+
             dailyCalBurned();
             weekCalBurned();
 
@@ -54,156 +60,36 @@ namespace FitnessTrackingManagementSystem
                 Invoke((MethodInvoker)refreshData);
                 return;
             }
+            // daily.Update()
             InitializeDashboard();
         }
-
 
         // daily summary
         public void dailyCalBurned()
         {
-            using (SqlConnection connect = new SqlConnection(sqlConnectionString.connectionString))
-            {
-                connect.Open();
-
-                string query = "SELECT SUM(calories) from fitness_log WHERE date_insert = @date_in AND user_id = @user_id";
-
-                using (SqlCommand cmd = new SqlCommand(query, connect))
-                {
-                    DateTime today = DateTime.Today;
-
-                    cmd.Parameters.AddWithValue("@user_id", _currentUser.ID);
-                    cmd.Parameters.AddWithValue("@date_in", today);
-
-                    object result = cmd.ExecuteScalar();
-
-                    if(result != DBNull.Value)
-                    {
-                        int todayCal = Convert.ToInt32(result);
-                        dashboard_calBurnedToday.Text = todayCal.ToString();
-                        dailyCalBurnedValue = todayCal;
-                    }
-                    else
-                    {
-                        dashboard_calBurnedToday.Text = "0";
-                    }
-                }
-                connect.Close();
-            }
+            dashboard_calBurnedToday.Text = _dailySummary.CaloriesBurned.ToString();
         }
         public void weekCalBurned()
         {
-            using (SqlConnection connect = new SqlConnection(sqlConnectionString.connectionString))
-            {
-                connect.Open();
-
-                DateTime today = DateTime.Now.Date;
-                DateTime startWeek = DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek);
-                DateTime endWeek = startWeek.AddDays(7);
-
-                string query = $"SELECT SUM(calories) from fitness_log WHERE date_insert >= @startWeek AND date_insert <= @endWeek AND user_id = @user_id";
-
-                using (SqlCommand cmd = new SqlCommand(query, connect))
-                {
-                    cmd.Parameters.AddWithValue("@user_id", _currentUser.ID);
-                    cmd.Parameters.AddWithValue("@startWeek", startWeek);
-                    cmd.Parameters.AddWithValue("@endWeek", endWeek);
-
-                    object result = cmd.ExecuteScalar();
-
-                    if (result != DBNull.Value)
-                    {
-                        int weekCal = Convert.ToInt32(result);
-                        weekCalBurnedValue = weekCal;
-                        dashboard_calBurnedWeek.Text = weekCal.ToString();
-                    }
-                    else
-                    {
-                        dashboard_calBurnedWeek.Text = "0";
-                    }
-                }
-                connect.Close();
-            }
+            dashboard_calBurnedWeek.Text = _weekSummary.CaloriesBurned.ToString();
         }
 
         public void dailyCalConsumed()
         {
-            using (SqlConnection connect = new SqlConnection(sqlConnectionString.connectionString))
-            {
-                connect.Open();
-
-                string query = "SELECT SUM(calories) from food_log WHERE date_insert = @date_in AND user_id = @user_id";
-
-                using (SqlCommand cmd = new SqlCommand(query, connect))
-                {
-                    DateTime today = DateTime.Today;
-
-                    cmd.Parameters.AddWithValue("@user_id", _currentUser.ID);
-                    cmd.Parameters.AddWithValue("@date_in", today);
-
-                    object result = cmd.ExecuteScalar();
-
-                    if (result != DBNull.Value)
-                    {
-                        int todayCalCons = Convert.ToInt32(result);
-                        dashboard_calConsumedToday.Text = todayCalCons.ToString();
-                        dailyCalConsumedValue = todayCalCons;
-                    }
-                    else
-                    {
-                        dashboard_calConsumedToday.Text = "0";
-                    }
-                }
-                connect.Close();
-            }
+            dashboard_calConsumedToday.Text = _dailySummary.CaloriesConsumed.ToString();
         }
         public void weekCalConsumed()
         {
-            using (SqlConnection connect = new SqlConnection(sqlConnectionString.connectionString))
-            {
-                connect.Open();
-
-                DateTime today = DateTime.Now.Date;
-
-                DateTime startWeek = DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek);
-                DateTime endWeek = startWeek.AddDays(7);
-
-                string query = $"SELECT SUM(calories) from food_log WHERE date_insert >= @startWeek AND date_insert <= @endWeek AND user_id = @user_id";
-
-                using (SqlCommand cmd = new SqlCommand(query, connect))
-                {
-                    cmd.Parameters.AddWithValue("@user_id", _currentUser.ID);
-                    cmd.Parameters.AddWithValue("@startWeek", startWeek);
-                    cmd.Parameters.AddWithValue("@endWeek", endWeek);
-
-                    object result = cmd.ExecuteScalar();
-
-                    if (result != DBNull.Value)
-                    {
-                        int weekCal = Convert.ToInt32(result);
-                        weekCalConsumedValue = weekCal;
-                        dashboard_calConsumedWeek.Text = weekCal.ToString();
-                    }
-                    else
-                    {
-                        dashboard_calConsumedWeek.Text = "0";
-                    }
-                }
-                connect.Close();
-            }
+            dashboard_calConsumedWeek.Text = _weekSummary.CaloriesConsumed.ToString();
         }
         public void dailyNet()
         {
-            dashboard_calNetToday.Text = String.Format("{0} / {1}", (-1*(dailyCalConsumedValue - dailyCalBurnedValue - _currentUser.Bmr_calories)).ToString(), _currentUser.Calorie_goal);
+            dashboard_calNetToday.Text = String.Format("{0} / {1}", (-1*_dailySummary.CalculatedNet).ToString(), _currentUser.Calorie_goal);
         }
 
         public void weekNet()
         {
-            DayOfWeek startOfWeek = DayOfWeek.Sunday;
-
-            // Calculate the difference in days from the start of the week
-            int daysSinceWeekStart = ((int)DateTime.Now.DayOfWeek - (int)startOfWeek + 7) % 7 + 1;
-
-            dashboard_calNetWeek.Text = String.Format("{0} / {1}", (-1 * (weekCalConsumedValue - weekCalBurnedValue - _currentUser.Bmr_calories* daysSinceWeekStart)).ToString(), _currentUser.Calorie_goal*7);
+            dashboard_calNetWeek.Text = String.Format("{0} / {1}", (-1 * _weekSummary.CalculatedNet).ToString(), _currentUser.Calorie_goal*7);
         }
         public void weightToday()
         {
