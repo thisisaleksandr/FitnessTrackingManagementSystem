@@ -99,10 +99,7 @@ namespace FitnessTrackingManagementSystem
                 fitnessLog_activity.SelectedItem = row.Cells[1].Value.ToString();
                 fitnessLog_duration.Text = row.Cells[2].Value.ToString();
                 fitnessLog_calorie.Text = row.Cells[3].Value.ToString();
-
                 fitnessLog_date.Value = Convert.ToDateTime(row.Cells[4].Value.ToString());
-                // fitnessLog_date.Text = row.Cells[4].Value.ToString();
-
             }
         }
 
@@ -119,7 +116,7 @@ namespace FitnessTrackingManagementSystem
                 {
                     using (SqlConnection connect = new SqlConnection(sqlConnectionString.connectionString))
                     {
-                        // open connection to sql
+
                         connect.Open();
 
                         string updateData = "UPDATE fitness_log SET activity = @act, duration = @dur, " +
@@ -186,7 +183,6 @@ namespace FitnessTrackingManagementSystem
                             MessageBox.Show("Deleted successfully", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         connect.Close();
-
                     }
                 }
             }

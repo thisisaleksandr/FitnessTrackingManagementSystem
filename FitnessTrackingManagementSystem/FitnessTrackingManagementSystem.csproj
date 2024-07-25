@@ -47,9 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\DailySummary.cs" />
+    <Compile Include="Classes\FitnessData.cs" />
+    <Compile Include="Classes\FoodData.cs" />
     <Compile Include="Classes\Summary.cs" />
     <Compile Include="Classes\User.cs" />
     <Compile Include="Classes\WeekSummary.cs" />
+    <Compile Include="Classes\WeightData.cs" />
     <Compile Include="UserControlForms\CalorieCalculator.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -68,14 +71,12 @@
     <Compile Include="UserControlForms\Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="FitnessData.cs" />
     <Compile Include="UserControlForms\FitnessLogForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControlForms\FitnessLogForm.Designer.cs">
       <DependentUpon>FitnessLogForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="FoodData.cs" />
     <Compile Include="UserControlForms\FoodLogForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -109,7 +110,6 @@
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
     <Compile Include="sqlConnection.cs" />
-    <Compile Include="WeightData.cs" />
     <EmbeddedResource Include="UserControlForms\CalorieCalculator.resx">
       <DependentUpon>CalorieCalculator.cs</DependentUpon>
     </EmbeddedResource>
