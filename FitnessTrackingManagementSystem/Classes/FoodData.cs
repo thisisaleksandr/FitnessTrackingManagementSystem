@@ -9,21 +9,18 @@ using FitnessTrackingManagementSystem.Classes;
 
 namespace FitnessTrackingManagementSystem
 {
-    class FoodData
+    class FoodData: DataLog<FoodData>
     {
-        public int ID { set; get; }
+
         public string MealName { set; get; }
         public int Calories { set; get; }
-        public string Date { set; get; }
 
-        private User _current_user;
 
-        public FoodData(User curr_user)
+        public FoodData(User curr_user) : base(curr_user)
         {
-            _current_user = curr_user;
         }
 
-        public List<FoodData> foodDataList()
+        public override List<FoodData> getLastEntries()
         {
             List<FoodData> listData = new List<FoodData>();
 
@@ -31,7 +28,7 @@ namespace FitnessTrackingManagementSystem
             {
                 connect.Open();
 
-                string selectData = "SELECT * FROM food_log WHERE user_id = @userid";
+                string selectData = "SELECT * FROM (SELECT TOP 12 * FROM food_log WHERE user_id = @userid ORDER BY date_insert DESC) AS subquery ORDER by date_insert ASC";
 
                 using (SqlCommand cmd = new SqlCommand(selectData, connect))
                 {
@@ -48,7 +45,7 @@ namespace FitnessTrackingManagementSystem
                         fData.ID = (int)reader["id"];
                         fData.MealName = reader["meal_name"].ToString();
                         fData.Calories = (int)reader["calories"];
-                        fData.Date = ((DateTime)reader["date_insert"]).ToString("MM-dd-yyyy");
+                        fData.DateString = ((DateTime)reader["date_insert"]).ToString("MM-dd-yyyy");
 
                         listData.Add(fData);
 

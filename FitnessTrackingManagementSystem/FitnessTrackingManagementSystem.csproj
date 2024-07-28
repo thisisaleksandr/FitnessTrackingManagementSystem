@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\DailySummary.cs" />
+    <Compile Include="Classes\DataLog.cs" />
     <Compile Include="Classes\FitnessData.cs" />
     <Compile Include="Classes\FoodData.cs" />
     <Compile Include="Classes\Summary.cs" />

@@ -10,22 +10,17 @@ using FitnessTrackingManagementSystem.Classes;
 namespace FitnessTrackingManagementSystem
 {
     // class to store the data and then retrive it in a table in the fitness log form
-    class FitnessData
+    class FitnessData: DataLog<FitnessData>
     {
-        public int ID { set; get; }
-        public string Activity { set; get; }
-        public int Duration {  set; get; }
-        public int Calories {  set; get; }
-        public string Date {  set; get; }
+        public string Activity { get; set; }
+        public int Duration { get; set; }
+        public int Calories { get; set; }
 
-        private User _current_user;
-
-        public FitnessData(User curr_user)
+        public FitnessData(User curr_user):base(curr_user)
         {
-            _current_user = curr_user;
         }
 
-        public List<FitnessData> fitnessDataList()
+        public override List<FitnessData> getLastEntries()
         {
             List<FitnessData> listData = new List<FitnessData>();
 
@@ -51,7 +46,7 @@ namespace FitnessTrackingManagementSystem
                         fData.Activity = reader["activity"].ToString();
                         fData.Duration = (int)reader["duration"];
                         fData.Calories = (int)reader["calories"];
-                        fData.Date = ((DateTime)reader["date_insert"]).ToString("MM-dd-yyyy");
+                        fData.DateString = ((DateTime)reader["date_insert"]).ToString("MM-dd-yyyy");
 
                         listData.Add(fData);
                     }

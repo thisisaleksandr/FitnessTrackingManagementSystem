@@ -9,20 +9,15 @@ using FitnessTrackingManagementSystem.Classes;
 
 namespace FitnessTrackingManagementSystem
 {
-    class WeightData
+    class WeightData: DataLog<WeightData>
     {
-        public int ID { set; get; }
         public float Weight { set; get; }
-        public string Date { set; get; }
 
-        private User _current_user;
-
-        public WeightData(User curr_user)
+        public WeightData(User curr_user) : base(curr_user)
         {
-            _current_user = curr_user;
         }
 
-        public List<WeightData> weightDataList()
+        public override List<WeightData> getLastEntries()
         {
             List<WeightData> listData = new List<WeightData>();
 
@@ -30,7 +25,7 @@ namespace FitnessTrackingManagementSystem
             {
                 connect.Open();
 
-                string selectData = "SELECT * FROM weight_log WHERE user_id = @userid";
+                string selectData = "SELECT * FROM (SELECT TOP 12 * FROM weight_log WHERE user_id = @userid ORDER BY date_insert DESC) AS subquery ORDER by date_insert ASC";
 
                 using (SqlCommand cmd = new SqlCommand(selectData, connect))
                 {
@@ -46,7 +41,7 @@ namespace FitnessTrackingManagementSystem
                         WeightData wData = new WeightData(_current_user);
                         wData.ID = reader.GetInt32(reader.GetOrdinal("id"));
                         wData.Weight = (float)reader.GetDouble(reader.GetOrdinal("weight_value"));
-                        wData.Date = reader.GetDateTime(reader.GetOrdinal("date_insert")).ToString("MM-dd-yyyy");
+                        wData.DateString = reader.GetDateTime(reader.GetOrdinal("date_insert")).ToString("MM-dd-yyyy");
 
                         listData.Add(wData);
 

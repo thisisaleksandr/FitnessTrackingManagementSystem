@@ -44,7 +44,7 @@ namespace FitnessTrackingManagementSystem
         public void displayFitnessDataList()
         {
             FitnessData fData = new FitnessData(_currentUser);
-            List<FitnessData> listData = fData.fitnessDataList();
+            List<FitnessData> listData = fData.getLastEntries();
 
             dataGridView1.DataSource = listData;
         }
