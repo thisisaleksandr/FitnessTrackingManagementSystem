@@ -11,10 +11,10 @@ namespace FitnessTrackingManagementSystem
 {
     class FoodData: DataLog<FoodData>
     {
-
-        public string MealName { set; get; }
+        public override int ID { get; set; }
+        public string Meal { set; get; }
         public int Calories { set; get; }
-
+        public override string Date { get; set; }
 
         public FoodData(User curr_user) : base(curr_user)
         {
@@ -43,9 +43,9 @@ namespace FitnessTrackingManagementSystem
                         // read the data and store it in the class
                         FoodData fData = new FoodData(_current_user);
                         fData.ID = (int)reader["id"];
-                        fData.MealName = reader["meal_name"].ToString();
+                        fData.Meal = reader["meal_name"].ToString();
                         fData.Calories = (int)reader["calories"];
-                        fData.DateString = ((DateTime)reader["date_insert"]).ToString("MM-dd-yyyy");
+                        fData.Date = ((DateTime)reader["date_insert"]).ToString("MM-dd-yyyy");
 
                         listData.Add(fData);
 

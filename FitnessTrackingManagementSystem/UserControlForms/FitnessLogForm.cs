@@ -14,7 +14,7 @@ namespace FitnessTrackingManagementSystem
 {
     public partial class FitnessLogForm : UserControl
     {
-        private int getID = 0; // get fitness log ID to update the table
+        private int getID = 0; // get fitness log ID to update/delete it in the table
         private User _currentUser;
 
         public FitnessLogForm()

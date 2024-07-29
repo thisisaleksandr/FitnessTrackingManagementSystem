@@ -51,6 +51,12 @@ namespace FitnessTrackingManagementSystem
             weekNet();
 
             weightToday();
+
+            setDayCalGoal();
+            setWeekCalGoal();
+
+            setDayGoalAchieved();
+
         }
 
         public void refreshData()
@@ -65,6 +71,30 @@ namespace FitnessTrackingManagementSystem
         }
 
         // daily summary
+
+
+        public void setDayGoalAchieved()
+        {
+            if (-1 * _dailySummary.CalculatedNet >= _currentUser.Calorie_goal)
+            {
+                dashboard_calGoalAchToday.Text = "YES";
+                dashboard_calGoalAchToday.ForeColor = Color.Green;
+            }
+            else
+            {
+                dashboard_calGoalAchToday.Text = "NO";
+                dashboard_calGoalAchToday.ForeColor = Color.Red;
+            }
+
+        }
+        public void setDayCalGoal()
+        {
+            dashboard_calGoalToday.Text = _currentUser.Calorie_goal.ToString();
+        }
+        public void setWeekCalGoal()
+        {
+            dashboard_calGoalWeek.Text = (_currentUser.Calorie_goal * 7).ToString();
+        }
         public void dailyCalBurned()
         {
             dashboard_calBurnedToday.Text = _dailySummary.CaloriesBurned.ToString();
@@ -84,12 +114,12 @@ namespace FitnessTrackingManagementSystem
         }
         public void dailyNet()
         {
-            dashboard_calNetToday.Text = String.Format("{0} / {1}", (-1*_dailySummary.CalculatedNet).ToString(), _currentUser.Calorie_goal);
+            dashboard_calNetToday.Text = (-1*_dailySummary.CalculatedNet).ToString();
         }
 
         public void weekNet()
         {
-            dashboard_calNetWeek.Text = String.Format("{0} / {1}", (-1 * _weekSummary.CalculatedNet).ToString(), _currentUser.Calorie_goal*7);
+            dashboard_calNetWeek.Text = (-1 * _weekSummary.CalculatedNet).ToString();
         }
         public void weightToday()
         {
@@ -120,6 +150,11 @@ namespace FitnessTrackingManagementSystem
                 }
                 connect.Close();
             }
+        }
+
+        private void dashboard_aboutCalculation_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Deficit = Calories Consumed - Calories Burned - Daily Calorie Needs", "Calculation Information", MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
     }
 }

@@ -8,8 +8,8 @@ namespace FitnessTrackingManagementSystem.Classes
 {
     abstract class DataLog<T> where T : DataLog<T>
     {
-        public int ID {  get; set; }
-        public string DateString {  get; set; }
+        public abstract int ID {  get; set; }
+        public abstract string Date {  get; set; }
 
         public User _current_user;
 

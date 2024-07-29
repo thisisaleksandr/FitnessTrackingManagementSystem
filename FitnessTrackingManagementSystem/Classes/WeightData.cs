@@ -11,7 +11,9 @@ namespace FitnessTrackingManagementSystem
 {
     class WeightData: DataLog<WeightData>
     {
+        public override int ID { get; set; }
         public float Weight { set; get; }
+        public override string Date { get; set; }
 
         public WeightData(User curr_user) : base(curr_user)
         {
@@ -41,7 +43,7 @@ namespace FitnessTrackingManagementSystem
                         WeightData wData = new WeightData(_current_user);
                         wData.ID = reader.GetInt32(reader.GetOrdinal("id"));
                         wData.Weight = (float)reader.GetDouble(reader.GetOrdinal("weight_value"));
-                        wData.DateString = reader.GetDateTime(reader.GetOrdinal("date_insert")).ToString("MM-dd-yyyy");
+                        wData.Date = reader.GetDateTime(reader.GetOrdinal("date_insert")).ToString("MM-dd-yyyy");
 
                         listData.Add(wData);
 
