@@ -19,11 +19,6 @@ namespace FitnessTrackingManagementSystem
         private WeekSummary _weekSummary = new WeekSummary();
         private User _currentUser;
 
-        private int dailyCalBurnedValue = 0;
-        private int dailyCalConsumedValue = 0;
-
-        private int weekCalBurnedValue = 0;
-        private int weekCalConsumedValue = 0;
 
         public Dashboard()
         {
@@ -70,9 +65,6 @@ namespace FitnessTrackingManagementSystem
             InitializeDashboard();
         }
 
-        // daily summary
-
-
         public void setDayGoalAchieved()
         {
             if (-1 * _dailySummary.CalculatedNet >= _currentUser.Calorie_goal)
@@ -114,7 +106,7 @@ namespace FitnessTrackingManagementSystem
         }
         public void dailyNet()
         {
-            dashboard_calNetToday.Text = (-1*_dailySummary.CalculatedNet).ToString();
+            dashboard_calNetToday.Text = (-1 * _dailySummary.CalculatedNet).ToString();
         }
 
         public void weekNet()
@@ -127,7 +119,7 @@ namespace FitnessTrackingManagementSystem
             {
                 connect.Open();
 
-                string query = "SELECT TOP 1 weight_value FROM weight_log WHERE user_id = @user_id ORDER BY date_insert DESC ";
+                string query = "SELECT TOP 1 weight_value FROM weight_log WHERE user_id = @user_id ORDER BY date_insert DESC, id DESC";
 
                 using (SqlCommand cmd = new SqlCommand(query, connect))
                 {
@@ -151,7 +143,6 @@ namespace FitnessTrackingManagementSystem
                 connect.Close();
             }
         }
-
         private void dashboard_aboutCalculation_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Deficit = Calories Consumed - Calories Burned - Daily Calorie Needs", "Calculation Information", MessageBoxButtons.OK, MessageBoxIcon.Question);

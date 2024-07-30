@@ -38,9 +38,13 @@ namespace FitnessTrackingManagementSystem
         private void RegisterForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (MessageBox.Show("Are you sure you want to exit?", "Confirmation Message",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
             {
                 e.Cancel = true;
+            }
+            else
+            {
+                Environment.Exit(0);
             }
         }
 

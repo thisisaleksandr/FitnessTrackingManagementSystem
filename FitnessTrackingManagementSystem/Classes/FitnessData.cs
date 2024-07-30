@@ -30,8 +30,7 @@ namespace FitnessTrackingManagementSystem
             {
                 connect.Open();
 
-                string selectData = "SELECT * FROM (SELECT TOP 12 * FROM fitness_log WHERE user_id = @userid ORDER BY date_insert DESC) AS subquery ORDER by date_insert ASC";
-                //string selectData = "SELECT * FROM fitness_log WHERE user_id = @userid";
+                string selectData = "SELECT * FROM (SELECT TOP 12 * FROM fitness_log WHERE user_id = @userid ORDER BY date_insert DESC, id DESC) AS subquery ORDER by date_insert ASC, id ASC";
 
                 using (SqlCommand cmd = new SqlCommand(selectData, connect))
                 {

@@ -32,6 +32,10 @@ namespace FitnessTrackingManagementSystem
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No){
                 e.Cancel = true;
             }
+            else
+            {
+                Environment.Exit(0);
+            }
         }
 
         private void login_showPassword_CheckedChanged(object sender, EventArgs e)

@@ -40,12 +40,12 @@
             this.main_welcome = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.fitnessLog1 = new FitnessTrackingManagementSystem.FitnessLogForm();
-            this.settingsForm1 = new FitnessTrackingManagementSystem.SettingsForm();
             this.dashboard1 = new FitnessTrackingManagementSystem.Dashboard();
             this.calorieCalculator1 = new FitnessTrackingManagementSystem.CalorieCalculator();
             this.currentWeightForm1 = new FitnessTrackingManagementSystem.CurrentWeightForm();
             this.foodLogForm1 = new FitnessTrackingManagementSystem.FoodLogForm();
+            this.fitnessLog1 = new FitnessTrackingManagementSystem.FitnessLogForm();
+            this.settingsForm1 = new FitnessTrackingManagementSystem.SettingsForm();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -202,20 +202,6 @@
             this.panel2.Size = new System.Drawing.Size(928, 744);
             this.panel2.TabIndex = 1;
             // 
-            // fitnessLog1
-            // 
-            this.fitnessLog1.Location = new System.Drawing.Point(0, 0);
-            this.fitnessLog1.Name = "fitnessLog1";
-            this.fitnessLog1.Size = new System.Drawing.Size(928, 744);
-            this.fitnessLog1.TabIndex = 0;
-            // 
-            // settingsForm1
-            // 
-            this.settingsForm1.Location = new System.Drawing.Point(0, 0);
-            this.settingsForm1.Name = "settingsForm1";
-            this.settingsForm1.Size = new System.Drawing.Size(928, 744);
-            this.settingsForm1.TabIndex = 5;
-            // 
             // dashboard1
             // 
             this.dashboard1.Location = new System.Drawing.Point(0, 0);
@@ -244,6 +230,20 @@
             this.foodLogForm1.Size = new System.Drawing.Size(928, 744);
             this.foodLogForm1.TabIndex = 1;
             // 
+            // fitnessLog1
+            // 
+            this.fitnessLog1.Location = new System.Drawing.Point(0, 0);
+            this.fitnessLog1.Name = "fitnessLog1";
+            this.fitnessLog1.Size = new System.Drawing.Size(928, 744);
+            this.fitnessLog1.TabIndex = 0;
+            // 
+            // settingsForm1
+            // 
+            this.settingsForm1.Location = new System.Drawing.Point(0, 0);
+            this.settingsForm1.Name = "settingsForm1";
+            this.settingsForm1.Size = new System.Drawing.Size(928, 744);
+            this.settingsForm1.TabIndex = 5;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -257,7 +257,7 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Fitness Tracking Manager";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RegisterForm_FormClosing);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

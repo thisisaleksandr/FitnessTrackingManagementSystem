@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using FitnessTrackingManagementSystem.Classes;
+using System.Diagnostics.Eventing.Reader;
 
 namespace FitnessTrackingManagementSystem
 {
@@ -56,6 +57,15 @@ namespace FitnessTrackingManagementSystem
                 fitnessLog_duration.Text == "")
             {
                 MessageBox.Show("Please fill all blank fields", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }else if(int.TryParse(fitnessLog_calorie.Text, out int value) == false)
+            {
+                MessageBox.Show("The calorie value should be in the format of an integer", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (int.TryParse(fitnessLog_duration.Text, out int value2) == false)
+            {
+                MessageBox.Show("The duration value should be in the format of an integer", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }else if(fitnessLog_date.Value > DateTime.Now){
+                MessageBox.Show("The date value should be in the past", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -109,6 +119,18 @@ namespace FitnessTrackingManagementSystem
                 fitnessLog_duration.Text == "")
             {
                 MessageBox.Show("Please select item from the table", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (int.TryParse(fitnessLog_calorie.Text, out int value) == false)
+            {
+                MessageBox.Show("The calorie value should be in the format of an integer", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (int.TryParse(fitnessLog_duration.Text, out int value2) == false)
+            {
+                MessageBox.Show("The duration value should be in the format of an integer", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (fitnessLog_date.Value > DateTime.Now)
+            {
+                MessageBox.Show("The date value should be in the past", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -187,8 +209,6 @@ namespace FitnessTrackingManagementSystem
                 }
             }
             displayFitnessDataList();
-        }
-
-        
+        }        
     }
 }

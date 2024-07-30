@@ -57,6 +57,14 @@ namespace FitnessTrackingManagementSystem
             {
                 MessageBox.Show("Please fill all blank fields", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            else if (int.TryParse(foodLog_calorie.Text, out int value2) == false)
+            {
+                MessageBox.Show("The calorie value should be in the format of an integer", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (foodLog_date.Value > DateTime.Now)
+            {
+                MessageBox.Show("The date value should be in the past", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             else
             {
                 using (SqlConnection connect = new SqlConnection(sqlConnectionString.connectionString))
@@ -103,6 +111,10 @@ namespace FitnessTrackingManagementSystem
             if (foodLog_foodType.Text == "" || foodLog_calorie.Text == "")
             {
                 MessageBox.Show("Please select item from the table", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (foodLog_date.Value > DateTime.Now)
+            {
+                MessageBox.Show("The date value should be in the past", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {

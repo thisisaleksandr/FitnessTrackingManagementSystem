@@ -20,7 +20,7 @@ namespace FitnessTrackingManagementSystem
 
             _currentUser = currentUser;
 
-            // pass the user class to all control forms
+            // passing user class to all control forms
             dashboard1.SetCurrentUser(currentUser);
             fitnessLog1.SetCurrentUser(currentUser);
             foodLogForm1.SetCurrentUser(currentUser);
@@ -29,21 +29,13 @@ namespace FitnessTrackingManagementSystem
             settingsForm1.SetCurrentUser(currentUser);
 
             WelcomeUserChange();
+
         }
         
         // show "welcome" and then user's name in main menu
         private void WelcomeUserChange()
         {
             main_welcome.Text = String.Format("Welcome,\n{0}!", _currentUser.Username);
-        }
-
-        private void RegisterForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (MessageBox.Show("Are you sure you want to exit?", "Confirmation Message",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-            {
-                e.Cancel = true;
-            }
         }
 
         private void main_logoutBtn_Click(object sender, EventArgs e)
@@ -142,6 +134,19 @@ namespace FitnessTrackingManagementSystem
             if (setForm != null)
             {
                 setForm.refreshData();
+            }
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to exit?", "Confirmation Message",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+            else
+            {
+                Environment.Exit(0);
             }
         }
     }

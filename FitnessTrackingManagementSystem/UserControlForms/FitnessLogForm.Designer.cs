@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.fitnessLog_date = new System.Windows.Forms.DateTimePicker();
             this.fitnessLog_clearBtn = new System.Windows.Forms.Button();
             this.fitnessLog_addBtn = new System.Windows.Forms.Button();
             this.fitnessLog_activity = new System.Windows.Forms.ComboBox();
@@ -44,7 +45,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.fitnessLog_date = new System.Windows.Forms.DateTimePicker();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -67,6 +67,15 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(293, 707);
             this.panel1.TabIndex = 0;
+            // 
+            // fitnessLog_date
+            // 
+            this.fitnessLog_date.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fitnessLog_date.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.fitnessLog_date.Location = new System.Drawing.Point(23, 335);
+            this.fitnessLog_date.Name = "fitnessLog_date";
+            this.fitnessLog_date.Size = new System.Drawing.Size(251, 35);
+            this.fitnessLog_date.TabIndex = 11;
             // 
             // fitnessLog_clearBtn
             // 
@@ -102,7 +111,10 @@
             this.fitnessLog_activity.FormattingEnabled = true;
             this.fitnessLog_activity.Items.AddRange(new object[] {
             "Cardio training",
-            "Strength training"});
+            "Strength training",
+            "Sports",
+            "Flexibility and Balance",
+            "Other"});
             this.fitnessLog_activity.Location = new System.Drawing.Point(23, 49);
             this.fitnessLog_activity.Margin = new System.Windows.Forms.Padding(4);
             this.fitnessLog_activity.Name = "fitnessLog_activity";
@@ -113,7 +125,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(18, 376);
+            this.label4.Location = new System.Drawing.Point(18, 303);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(71, 29);
             this.label4.TabIndex = 6;
@@ -122,7 +134,7 @@
             // fitnessLog_calorie
             // 
             this.fitnessLog_calorie.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fitnessLog_calorie.Location = new System.Drawing.Point(23, 288);
+            this.fitnessLog_calorie.Location = new System.Drawing.Point(23, 242);
             this.fitnessLog_calorie.Name = "fitnessLog_calorie";
             this.fitnessLog_calorie.Size = new System.Drawing.Size(251, 35);
             this.fitnessLog_calorie.TabIndex = 5;
@@ -131,7 +143,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(18, 256);
+            this.label3.Location = new System.Drawing.Point(18, 210);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(175, 29);
             this.label3.TabIndex = 4;
@@ -140,7 +152,7 @@
             // fitnessLog_duration
             // 
             this.fitnessLog_duration.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fitnessLog_duration.Location = new System.Drawing.Point(23, 165);
+            this.fitnessLog_duration.Location = new System.Drawing.Point(23, 145);
             this.fitnessLog_duration.Name = "fitnessLog_duration";
             this.fitnessLog_duration.Size = new System.Drawing.Size(251, 35);
             this.fitnessLog_duration.TabIndex = 3;
@@ -149,7 +161,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(18, 133);
+            this.label2.Location = new System.Drawing.Point(18, 113);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(208, 29);
             this.label2.TabIndex = 2;
@@ -221,14 +233,14 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Indigo;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Indigo;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.Location = new System.Drawing.Point(18, 68);
@@ -240,15 +252,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(533, 557);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            // 
-            // fitnessLog_date
-            // 
-            this.fitnessLog_date.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fitnessLog_date.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.fitnessLog_date.Location = new System.Drawing.Point(23, 408);
-            this.fitnessLog_date.Name = "fitnessLog_date";
-            this.fitnessLog_date.Size = new System.Drawing.Size(251, 35);
-            this.fitnessLog_date.TabIndex = 11;
             // 
             // FitnessLogForm
             // 

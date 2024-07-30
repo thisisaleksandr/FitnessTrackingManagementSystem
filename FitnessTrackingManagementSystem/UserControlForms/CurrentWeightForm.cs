@@ -57,6 +57,14 @@ namespace FitnessTrackingManagementSystem
             {
                 MessageBox.Show("Please fill all blank fields", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            else if (int.TryParse(currWeight_weight.Text, out int value) == false)
+            {
+                MessageBox.Show("The weight value should be in the format of an integer", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (currWeight_date.Value > DateTime.Now)
+            {
+                MessageBox.Show("The date value should be in the past", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             else
             {
                 using (SqlConnection connect = new SqlConnection(sqlConnectionString.connectionString))
@@ -100,6 +108,14 @@ namespace FitnessTrackingManagementSystem
             if (currWeight_weight.Text == "")
             {
                 MessageBox.Show("Please select item from the table", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (int.TryParse(currWeight_weight.Text, out int value) == false)
+            {
+                MessageBox.Show("The weight value should be in the format of an integer", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (currWeight_date.Value > DateTime.Now)
+            {
+                MessageBox.Show("The date value should be in the past", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {

@@ -44,12 +44,27 @@ namespace FitnessTrackingManagementSystem
             {
                 MessageBox.Show("Please fill all blank fields", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            else if (int.TryParse(calculator_heightFeet.Text, out int hvalue) == false)
+            {
+                MessageBox.Show("The height feet value should be in the format of an integer", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (int.TryParse(calculator_heightInches.Text, out hvalue) == false)
+            {
+                MessageBox.Show("The height inch value should be in the format of an integer", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (int.TryParse(calculator_age.Text, out int agevalue) == false)
+            {
+                MessageBox.Show("The age value should be in the format of an integer", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (int.TryParse(calculator_weight.Text, out int wvalue) == false)
+            {
+                MessageBox.Show("The weight value should be in the format of an integer", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             else
             {
                 // calculate bmr
                 double height = int.Parse(calculator_heightFeet.Text) * 12 + int.Parse(calculator_heightInches.Text);
                 bool sex = calculator_sex.SelectedIndex == 0 ? true : false;
-                
 
                 BMR = _currentUser.CalculateBMR(int.Parse(calculator_age.Text),
                     float.Parse(calculator_weight.Text), height, sex);
@@ -63,13 +78,38 @@ namespace FitnessTrackingManagementSystem
                         _calGoal = 0;
                         break;
                     case 1:
-                        calculator_recomGoal.Text = "500 kcal/day";
-                        _calGoal = 500;
+                        if (calculator_sex.SelectedIndex == 1 && BMR - 500 < 1200 && BMR > 1200)
+                        {
+                            calculator_recomGoal.Text = String.Format("{0} kcal/day", BMR - 1200);
+                            _calGoal = BMR - 1200;
+                        }
+                        else if (calculator_sex.SelectedIndex == 0 && BMR - 500 < 1500 && BMR > 1500)
+                        {
+                            calculator_recomGoal.Text = String.Format("{0} kcal/day", BMR - 1500);
+                            _calGoal = BMR - 1500;
+                        }
+                        else
+                        {
+                            calculator_recomGoal.Text = "500 kcal/day";
+                            _calGoal = 500;
+                        }
                         break;
                     case 2:
-                        // add if statement to check if it is more than critical value
-                        calculator_recomGoal.Text = "800 kcal/day";
-                        _calGoal = 800;
+                        if (calculator_sex.SelectedIndex == 1 && BMR - 800 < 1200 && BMR > 1200)
+                        {
+                            calculator_recomGoal.Text = String.Format("{0} kcal/day", BMR - 1200);
+                            _calGoal = BMR - 1200;
+                        }
+                        else if (calculator_sex.SelectedIndex == 0 && BMR - 800 < 1500 && BMR > 1500)
+                        {
+                            calculator_recomGoal.Text = String.Format("{0} kcal/day", BMR - 1500);
+                            _calGoal = BMR - 1500;
+                        }
+                        else
+                        {
+                            calculator_recomGoal.Text = "800 kcal/day";
+                            _calGoal = 800;
+                        }
                         break;
                 }
 
@@ -94,9 +134,6 @@ namespace FitnessTrackingManagementSystem
         {
             _currentUser.Bmr_calories = BMR;
             _currentUser.Calorie_goal = _calGoal;
-
-            Console.WriteLine(BMR);
-            Console.WriteLine(_calGoal);
 
             using (SqlConnection connect = new SqlConnection(sqlConnectionString.connectionString))
             {

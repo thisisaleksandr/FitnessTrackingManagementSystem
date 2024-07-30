@@ -39,8 +39,6 @@ namespace FitnessTrackingManagementSystem
             settings_CurrentDeficitGoal.Text = String.Format("{0} kcal / day", _currentUser.Calorie_goal);
         }
         
-
-
         public void refreshData()
         {
             if (InvokeRequired)
@@ -48,63 +46,78 @@ namespace FitnessTrackingManagementSystem
                 Invoke((MethodInvoker)refreshData);
                 return;
             }
+            InitializeSettingsLog();
         }
 
         private void settings_updateCaloricNeedsBtn_Click(object sender, EventArgs e)
         {
-            updatedNeeds = int.Parse(settings_dailyCaloricNeeds.Text);
-            _currentUser.Bmr_calories = updatedNeeds;
-
-            using (SqlConnection connect = new SqlConnection(sqlConnectionString.connectionString))
+            if (int.TryParse(settings_dailyCaloricNeeds.Text, out int value) == false)
             {
-                // open connection to sql
-                connect.Open();
-
-                string updateData = "UPDATE users SET bmr_calories = @bmr WHERE id = @id ";
-
-                using (SqlCommand cmd = new SqlCommand(updateData, connect))
-                {
-                    cmd.Parameters.AddWithValue("@id", _currentUser.ID);
-                    cmd.Parameters.AddWithValue("@bmr", updatedNeeds);
-
-                    cmd.ExecuteNonQuery();
-
-                    settings_dailyCaloricNeeds.Text = "";
-
-                    MessageBox.Show("Information updated successfully", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                connect.Close();
+                MessageBox.Show("The Calorie value should be in the format of an integer", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            displayCurrentSettings();
+            else
+            {
+                updatedNeeds = int.Parse(settings_dailyCaloricNeeds.Text);
+                _currentUser.Bmr_calories = updatedNeeds;
+
+                using (SqlConnection connect = new SqlConnection(sqlConnectionString.connectionString))
+                {
+                    // open connection to sql
+                    connect.Open();
+
+                    string updateData = "UPDATE users SET bmr_calories = @bmr WHERE id = @id ";
+
+                    using (SqlCommand cmd = new SqlCommand(updateData, connect))
+                    {
+                        cmd.Parameters.AddWithValue("@id", _currentUser.ID);
+                        cmd.Parameters.AddWithValue("@bmr", updatedNeeds);
+
+                        cmd.ExecuteNonQuery();
+
+                        settings_dailyCaloricNeeds.Text = "";
+
+                        MessageBox.Show("Information updated successfully", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    connect.Close();
+                }
+                displayCurrentSettings();
+            }   
         }
 
         private void settings_updateGoalBtn_Click(object sender, EventArgs e)
         {
-            updatedGoal = int.Parse(settings_deficitGoal.Text);
-            _currentUser.Calorie_goal = updatedGoal;
-
-            using (SqlConnection connect = new SqlConnection(sqlConnectionString.connectionString))
+            if (int.TryParse(settings_deficitGoal.Text, out int value) == false)
             {
-                // open connection to sql
-                connect.Open();
-
-                string updateData = "UPDATE users SET calorie_goal = @goal WHERE id = @id ";
-
-                using (SqlCommand cmd = new SqlCommand(updateData, connect))
-                {
-                    cmd.Parameters.AddWithValue("@id", _currentUser.ID);
-                    cmd.Parameters.AddWithValue("@goal", updatedGoal);
-
-                    cmd.ExecuteNonQuery();
-
-                    settings_deficitGoal.Text = "";
-
-                    MessageBox.Show("Information updated successfully", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                connect.Close();
-
+                MessageBox.Show("The Calorie value should be in the format of an integer", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            displayCurrentSettings();
+            else
+            {
+                updatedGoal = int.Parse(settings_deficitGoal.Text);
+                _currentUser.Calorie_goal = updatedGoal;
+
+                using (SqlConnection connect = new SqlConnection(sqlConnectionString.connectionString))
+                {
+                    // open connection to sql
+                    connect.Open();
+
+                    string updateData = "UPDATE users SET calorie_goal = @goal WHERE id = @id ";
+
+                    using (SqlCommand cmd = new SqlCommand(updateData, connect))
+                    {
+                        cmd.Parameters.AddWithValue("@id", _currentUser.ID);
+                        cmd.Parameters.AddWithValue("@goal", updatedGoal);
+
+                        cmd.ExecuteNonQuery();
+
+                        settings_deficitGoal.Text = "";
+
+                        MessageBox.Show("Information updated successfully", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    connect.Close();
+
+                }
+                displayCurrentSettings();
+            }       
         }
     }
 }

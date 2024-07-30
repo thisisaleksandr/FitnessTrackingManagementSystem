@@ -9,7 +9,8 @@ namespace FitnessTrackingManagementSystem.Classes
 {
     public class WeekSummary : Summary
     {
-        private int daysSinceWeekStart;
+        private int _daysSinceWeekStart;
+        public int DaysSinceWeekStart { get { return _daysSinceWeekStart; } }
         
         public override void UpdateData(User currentUser)
         {
@@ -69,7 +70,8 @@ namespace FitnessTrackingManagementSystem.Classes
         public int getDaysSinceWeekStart()
         {
             DayOfWeek startOfWeek = DayOfWeek.Sunday;
-            return ((int)DateTime.Now.DayOfWeek - (int)startOfWeek + 7) % 7 + 1;
+            _daysSinceWeekStart = ((int)DateTime.Now.DayOfWeek - (int)startOfWeek + 7) % 7 + 1;
+            return _daysSinceWeekStart;
         }
     }
 }
