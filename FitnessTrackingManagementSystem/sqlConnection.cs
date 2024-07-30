@@ -9,7 +9,7 @@ namespace FitnessTrackingManagementSystem
     public class sqlConnectionString
     {
         // Sql connection string
-        public static string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\DSU\Documents\fitnessManager.mdf;Integrated Security=True;Connect Timeout=30";
+        public static string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Data\fitnessManager.mdf;Integrated Security = True";
         
     }
 }
