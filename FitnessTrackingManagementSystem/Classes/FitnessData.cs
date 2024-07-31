@@ -22,7 +22,7 @@ namespace FitnessTrackingManagementSystem
         {
         }
 
-        public override List<FitnessData> getLastEntries()
+        public override List<FitnessData> GetLastEntries()
         {
             List<FitnessData> listData = new List<FitnessData>();
 

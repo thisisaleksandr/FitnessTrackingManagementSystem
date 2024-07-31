@@ -20,7 +20,7 @@ namespace FitnessTrackingManagementSystem
         {
         }
 
-        public override List<FoodData> getLastEntries()
+        public override List<FoodData> GetLastEntries()
         {
             List<FoodData> listData = new List<FoodData>();
 

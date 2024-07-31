@@ -45,7 +45,7 @@ namespace FitnessTrackingManagementSystem
         public void displayWeightDataList()
         {
             WeightData wData = new WeightData(_currentUser);
-            List<WeightData> listData = wData.getLastEntries();
+            List<WeightData> listData = wData.GetLastEntries();
 
             dataGridView1.DataSource = listData;
 

@@ -18,6 +18,6 @@ namespace FitnessTrackingManagementSystem.Classes
             _current_user = curr_user;
         }
 
-        public abstract List<T> getLastEntries();
+        public abstract List<T> GetLastEntries();
     }
 }
