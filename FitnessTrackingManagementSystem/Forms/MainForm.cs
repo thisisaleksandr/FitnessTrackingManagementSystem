@@ -13,14 +13,17 @@ namespace FitnessTrackingManagementSystem
     using Classes;
     public partial class MainForm : Form
     {
+        // User class instance 
         private User _currentUser;
+
+        // constructor
         public MainForm(User currentUser)
         {
             InitializeComponent();
 
             _currentUser = currentUser;
 
-            // passing user class to all control forms
+            // pass user class of the current session to all control forms
             dashboard1.SetCurrentUser(currentUser);
             fitnessLog1.SetCurrentUser(currentUser);
             foodLogForm1.SetCurrentUser(currentUser);
@@ -32,12 +35,13 @@ namespace FitnessTrackingManagementSystem
 
         }
         
-        // show "welcome" and then user's name in main menu
+        // show "Welcome" and then user's username in main menu
         private void WelcomeUserChange()
         {
             main_welcome.Text = String.Format("Welcome,\n{0}!", _currentUser.Username);
         }
 
+        // click on log out
         private void main_logoutBtn_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure you want to logout?", "Confirmation Message",
@@ -49,6 +53,7 @@ namespace FitnessTrackingManagementSystem
             }
         }
 
+        // hide all control forms
         private void hideAllForms()
         {
             dashboard1.Visible = false;
@@ -58,6 +63,9 @@ namespace FitnessTrackingManagementSystem
             calorieCalculator1.Visible = false;
             currentWeightForm1.Visible = false;
         }
+
+        /* all next event handlers will show corresponding control form
+         * and will refresh data in them */
 
         private void main_dashboardBtn_Click(object sender, EventArgs e)
         {
@@ -137,6 +145,7 @@ namespace FitnessTrackingManagementSystem
             }
         }
 
+        // click on exit button
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (MessageBox.Show("Are you sure you want to exit?", "Confirmation Message",

@@ -16,17 +16,21 @@ namespace FitnessTrackingManagementSystem
     public partial class CalorieCalculator : UserControl
     {
         private User _currentUser;
+        // BMR is daily calorie needs
         private int BMR;
         private int _calGoal;
         public CalorieCalculator()
         {
             InitializeComponent();
         }
+
+        // to work with the current user in this class
         public void SetCurrentUser(User currentUser)
         {
             _currentUser = currentUser;
         }
 
+        // refreshes data
         public void refreshData()
         {
             if (InvokeRequired)
@@ -36,8 +40,11 @@ namespace FitnessTrackingManagementSystem
             }
         }
 
+        // click on Calculate button
         private void calculator_calculateBtn_Click(object sender, EventArgs e)
         {
+            /* different validations */
+
             if (calculator_sex.SelectedIndex == -1 || calculator_heightFeet.Text == "" ||
                 calculator_age.Text == "" || calculator_activityLvl.SelectedIndex == -1 ||
                 calculator_weight.Text == "" || calculator_weightGoal.SelectedIndex == -1)
@@ -62,15 +69,21 @@ namespace FitnessTrackingManagementSystem
             }
             else
             {
-                // calculate bmr
+                // get user inputs //
+
+                // sum feet and inches
                 double height = int.Parse(calculator_heightFeet.Text) * 12 + int.Parse(calculator_heightInches.Text);
+           
                 bool sex = calculator_sex.SelectedIndex == 0 ? true : false;
 
+                // calculate daily calorie needs using method "CalculateBMR()"
                 BMR = _currentUser.CalculateBMR(int.Parse(calculator_age.Text),
                     float.Parse(calculator_weight.Text), height, sex);
 
+                // show calculated bmr to user
                 calculator_bmr.Text = BMR.ToString() + " kcal/day";
 
+                // show the calorie goal depending on the desired goal
                 switch (calculator_weightGoal.SelectedIndex)
                 {
                     case 0:
@@ -78,6 +91,7 @@ namespace FitnessTrackingManagementSystem
                         _calGoal = 0;
                         break;
                     case 1:
+                        // validations to check if the goal is not less then the minimum calorie needs value
                         if (calculator_sex.SelectedIndex == 1 && BMR - 500 < 1200 && BMR > 1200)
                         {
                             calculator_recomGoal.Text = String.Format("{0} kcal/day", BMR - 1200);
@@ -95,6 +109,7 @@ namespace FitnessTrackingManagementSystem
                         }
                         break;
                     case 2:
+                        // validations to check if the goal is not less then the minimum calorie needs value
                         if (calculator_sex.SelectedIndex == 1 && BMR - 800 < 1200 && BMR > 1200)
                         {
                             calculator_recomGoal.Text = String.Format("{0} kcal/day", BMR - 1200);
@@ -112,9 +127,10 @@ namespace FitnessTrackingManagementSystem
                         }
                         break;
                 }
-
             }
         }
+
+        // function that clears all textboxes
         public void clearFields()
         {
             calculator_sex.SelectedIndex = -1;
@@ -125,16 +141,20 @@ namespace FitnessTrackingManagementSystem
             calculator_weightGoal.SelectedIndex = -1;
         }
 
+        // click on Clear button
         private void calculator_clearBtn_Click(object sender, EventArgs e)
         {
             clearFields();
         }
 
+        // click on Set As New button
         private void calculator_setAsNewBtn_Click(object sender, EventArgs e)
         {
+            // set new values in the user classes
             _currentUser.Bmr_calories = BMR;
             _currentUser.Calorie_goal = _calGoal;
 
+            // update them in the database
             using (SqlConnection connect = new SqlConnection(sqlConnectionString.connectionString))
             {
                 // open connection to sql
@@ -154,7 +174,6 @@ namespace FitnessTrackingManagementSystem
                     MessageBox.Show("Information updated successfully", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 connect.Close();
-
             }
         }
     }

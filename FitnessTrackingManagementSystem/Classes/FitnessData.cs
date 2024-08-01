@@ -22,6 +22,7 @@ namespace FitnessTrackingManagementSystem
         {
         }
 
+        // get last 12 entries from the database to populate the table
         public override List<FitnessData> GetLastEntries()
         {
             List<FitnessData> listData = new List<FitnessData>();
@@ -37,7 +38,6 @@ namespace FitnessTrackingManagementSystem
                     cmd.Parameters.AddWithValue("@userid", _current_user.ID);
                     cmd.ExecuteNonQuery();
 
-                    // create a data reader
                     SqlDataReader reader = cmd.ExecuteReader();
  
                     while (reader.Read())

@@ -11,7 +11,8 @@ namespace FitnessTrackingManagementSystem.Classes
     {
         private int _daysSinceWeekStart;
         public int DaysSinceWeekStart { get { return _daysSinceWeekStart; } }
-        
+
+        // retrieve data from the database for updating values in the dashboard
         public override void UpdateData(User currentUser)
         {
             using (SqlConnection connect = new SqlConnection(sqlConnectionString.connectionString))
@@ -22,6 +23,7 @@ namespace FitnessTrackingManagementSystem.Classes
                 DateTime startWeek = DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek);
                 DateTime endWeek = startWeek.AddDays(7);
 
+                // for burned calories
                 string query = $"SELECT SUM(calories) from fitness_log WHERE date_insert >= @startWeek AND date_insert <= @endWeek AND user_id = @user_id";
 
                 using (SqlCommand cmd = new SqlCommand(query, connect))
@@ -41,6 +43,8 @@ namespace FitnessTrackingManagementSystem.Classes
                         CaloriesBurned = 0;
                     }
                 }
+
+                // for consumed calories
                 query = $"SELECT SUM(calories) from food_log WHERE date_insert >= @startWeek AND date_insert <= @endWeek AND user_id = @user_id";
 
                 using (SqlCommand cmd = new SqlCommand(query, connect))
@@ -67,6 +71,7 @@ namespace FitnessTrackingManagementSystem.Classes
             }
         }
 
+        // get how many days passed since the week started (from sunday)
         public int getDaysSinceWeekStart()
         {
             DayOfWeek startOfWeek = DayOfWeek.Sunday;

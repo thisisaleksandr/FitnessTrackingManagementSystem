@@ -14,11 +14,14 @@ namespace FitnessTrackingManagementSystem
     using Classes;
     public partial class SignInForm : Form
     {
+        // make connection to the database
         SqlConnection connect = new SqlConnection(sqlConnectionString.connectionString);
         public SignInForm()
         {
             InitializeComponent();
         }
+
+        // click on sign up button
         private void login_signupBtn_Click(object sender, EventArgs e)
         {
             RegisterForm registerForm = new RegisterForm();
@@ -30,6 +33,8 @@ namespace FitnessTrackingManagementSystem
         {
             return (connect.State == ConnectionState.Closed) ? true : false;
         }
+
+        // click on the exit button
         private void SignInForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if(MessageBox.Show("Are you sure you want to exit?", "Confirmation Message",
@@ -42,14 +47,16 @@ namespace FitnessTrackingManagementSystem
             }
         }
 
+        // click on "Show password" will show or hide the password
         private void login_showPassword_CheckedChanged(object sender, EventArgs e)
         {
             login_password.PasswordChar = login_showPassword.Checked ? '\0' : '*';
         }
 
-        // login button handler
+        // click on login button
         private void login_btn_Click(object sender, EventArgs e)
         {
+            // to check if there is connection to database
             if (checkConnection())
             {
                 try
@@ -59,13 +66,13 @@ namespace FitnessTrackingManagementSystem
                         // open session to SQL server
                         connect.Open();
 
-                        // SQL query to retrieve data if the user's username and password matched
+                        // SQL query to retrieve data
                         string selectData = "SELECT * FROM users WHERE username = @usern AND password = @pass";
 
-                        // create a new command to execute: selectData - command, connect - reference to a SQlConnection object
+                        // create a new command to execute
                         using (SqlCommand cmd = new SqlCommand(selectData, connect))
                         {
-
+                            // add user entries to the query
                             cmd.Parameters.AddWithValue("@usern", login_username.Text.Trim());
                             cmd.Parameters.AddWithValue("@pass", login_password.Text.Trim());
 
@@ -74,13 +81,11 @@ namespace FitnessTrackingManagementSystem
 
                             adapter.Fill(table);
 
-                            // check if username and password are already exist in the database
                             if (table.Rows.Count > 0)
                             {
                                 MessageBox.Show("Login Successfully!", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 User currentUser = null;
 
-                                // create user class for the current session
                                 SqlDataReader reader = cmd.ExecuteReader();
                                 if (reader.Read())
                                 {
@@ -89,12 +94,12 @@ namespace FitnessTrackingManagementSystem
                                     int bmrCalories = reader.GetInt32(reader.GetOrdinal("bmr_calories"));
                                     int calorieGoal = reader.GetInt32(reader.GetOrdinal("calorie_goal"));
 
-                                    // create user class based on retrieved data
+                                    // create a user class for the current session based on the retrieved data
                                     currentUser = new User(currentUserId, currentUsername, bmrCalories, calorieGoal);
                                 }
                                 reader.Close();
 
-                                // create main form and pass user class
+                                // create a new main form and pass there user class
                                 MainForm mainForm = new MainForm(currentUser);
                                 mainForm.Show();
                                 this.Hide();

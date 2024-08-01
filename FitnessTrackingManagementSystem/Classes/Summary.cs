@@ -8,7 +8,6 @@ namespace FitnessTrackingManagementSystem.Classes
 {
     public abstract class Summary
     {
-        //public User _currentUser;
         public int CaloriesBurned { get; set;}
         public int CaloriesConsumed { get; set;}
         public int CalculatedNet { get; set; }

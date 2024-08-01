@@ -9,6 +9,8 @@
 
 SELECT * FROM users;
 
+DELETE FROM weight_log;
+
 CREATE TABLE fitness_log(
 	id INT PRIMARY KEY IDENTITY(1,1),
 	user_id INT,
@@ -20,7 +22,6 @@ CREATE TABLE fitness_log(
 
 SELECT * FROM fitness_log;
 
-
 CREATE TABLE food_log(
 	id INT PRIMARY KEY IDENTITY(1,1),
 	user_id INT,
@@ -28,7 +29,6 @@ CREATE TABLE food_log(
 	calories INT NULL,
 	date_insert DATE NULL
 )
-SELECT SUM(calories) from food_log WHERE date_insert = @date_in AND user_id = @user_id
 
 SELECT * FROM food_log;
 
@@ -42,3 +42,4 @@ CREATE TABLE weight_log(
 DROP TABLE weight_log;
 
 SELECT * FROM weight_log;
+

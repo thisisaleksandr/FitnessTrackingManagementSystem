@@ -23,6 +23,7 @@ namespace FitnessTrackingManagementSystem
             InitializeComponent();
         }
 
+        // to work with the current user in this class
         public void SetCurrentUser(User currentUser)
         {
             _currentUser = currentUser;
@@ -34,6 +35,7 @@ namespace FitnessTrackingManagementSystem
             displayCurrentSettings();
         }
 
+        // displays current user's settings 
         public void displayCurrentSettings() {
             settings_currentDailyNeeds.Text = String.Format("{0} kcal / day", _currentUser.Bmr_calories);
             settings_CurrentDeficitGoal.Text = String.Format("{0} kcal / day", _currentUser.Calorie_goal);
@@ -49,6 +51,7 @@ namespace FitnessTrackingManagementSystem
             InitializeSettingsLog();
         }
 
+        // click on update caloric needs button 
         private void settings_updateCaloricNeedsBtn_Click(object sender, EventArgs e)
         {
             if (int.TryParse(settings_dailyCaloricNeeds.Text, out int value) == false)
@@ -62,7 +65,6 @@ namespace FitnessTrackingManagementSystem
 
                 using (SqlConnection connect = new SqlConnection(sqlConnectionString.connectionString))
                 {
-                    // open connection to sql
                     connect.Open();
 
                     string updateData = "UPDATE users SET bmr_calories = @bmr WHERE id = @id ";
@@ -84,6 +86,7 @@ namespace FitnessTrackingManagementSystem
             }   
         }
 
+        // click on update the goal button
         private void settings_updateGoalBtn_Click(object sender, EventArgs e)
         {
             if (int.TryParse(settings_deficitGoal.Text, out int value) == false)
@@ -93,11 +96,12 @@ namespace FitnessTrackingManagementSystem
             else
             {
                 updatedGoal = int.Parse(settings_deficitGoal.Text);
+
+                // update value in the user class
                 _currentUser.Calorie_goal = updatedGoal;
 
                 using (SqlConnection connect = new SqlConnection(sqlConnectionString.connectionString))
                 {
-                    // open connection to sql
                     connect.Open();
 
                     string updateData = "UPDATE users SET calorie_goal = @goal WHERE id = @id ";
@@ -114,7 +118,6 @@ namespace FitnessTrackingManagementSystem
                         MessageBox.Show("Information updated successfully", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     connect.Close();
-
                 }
                 displayCurrentSettings();
             }       

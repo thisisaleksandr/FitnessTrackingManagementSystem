@@ -14,13 +14,16 @@ namespace FitnessTrackingManagementSystem
 {
     public partial class FoodLogForm : UserControl
     {
-        private int getID = 0; // get IT to update the table
+        // getID to store the ID of the food entry
+        // after clicking on one of the cell in the table
+        private int getID = 0;
         private User _currentUser;
         public FoodLogForm()
         {
             InitializeComponent();            
         }
 
+        // to work with the current user in this class
         public void SetCurrentUser(User currentUser)
         {
             _currentUser = currentUser;
@@ -32,6 +35,7 @@ namespace FitnessTrackingManagementSystem
             displayFoodDataList();
         }
 
+        // refreshes data
         public void refreshData()
         {
             if (InvokeRequired)
@@ -42,6 +46,7 @@ namespace FitnessTrackingManagementSystem
             displayFoodDataList();
         }
 
+        // function that will populate the table with values from the database
         public void displayFoodDataList()
         {
             FoodData fData = new FoodData(_currentUser);
@@ -51,8 +56,10 @@ namespace FitnessTrackingManagementSystem
 
         }
 
+        // click on Add button
         private void foodLog_addBtn_Click(object sender, EventArgs e)
         {
+            // validations
             if (foodLog_foodType.Text == "" || foodLog_calorie.Text == "")
             {
                 MessageBox.Show("Please fill all blank fields", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -65,11 +72,11 @@ namespace FitnessTrackingManagementSystem
             {
                 MessageBox.Show("The date value should be in the past", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            // add food entry to the database
             else
             {
                 using (SqlConnection connect = new SqlConnection(sqlConnectionString.connectionString))
                 {
-                    // open connection to sql
                     connect.Open();
 
                     string insertData = "INSERT INTO food_log (user_id, meal_name, calories, date_insert) " +
@@ -80,7 +87,7 @@ namespace FitnessTrackingManagementSystem
                         cmd.Parameters.AddWithValue("@user_id", _currentUser.ID);
                         cmd.Parameters.AddWithValue("@meal", foodLog_foodType.Text);
                         cmd.Parameters.AddWithValue("@cal", Int32.Parse(foodLog_calorie.Text.Trim()));
-                        cmd.Parameters.AddWithValue("@date", foodLog_date.Value); //was .Text
+                        cmd.Parameters.AddWithValue("@date", foodLog_date.Value);
 
                         cmd.ExecuteNonQuery();
                         clearFields();
@@ -89,23 +96,25 @@ namespace FitnessTrackingManagementSystem
 
                     }
                     connect.Close();
-
                 }
             }
             displayFoodDataList();
         }
 
+        // function that clears the textbox
         private void clearFields()
         {
             foodLog_foodType.Text = "";
             foodLog_calorie.Text = "";
         }
 
+        // click on clear button
         private void foodLog_clearBtn_Click(object sender, EventArgs e)
         {
             clearFields();
         }
 
+        // click on update button
         private void foodLog_updateBtn_Click(object sender, EventArgs e)
         {
             if (foodLog_foodType.Text == "" || foodLog_calorie.Text == "")
@@ -116,6 +125,7 @@ namespace FitnessTrackingManagementSystem
             {
                 MessageBox.Show("The date value should be in the past", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            // update database
             else
             {
                 if (MessageBox.Show("Are you sure you want to update ID: " + getID + "?", "Confirmation Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -149,7 +159,7 @@ namespace FitnessTrackingManagementSystem
             displayFoodDataList();
         }
 
-        // filling textboxes when we click on rows
+        // get id and fill textboxes when we click on one of the cells
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex != -1)
@@ -161,11 +171,11 @@ namespace FitnessTrackingManagementSystem
                 foodLog_foodType.Text = row.Cells[1].Value.ToString();
                 foodLog_calorie.Text = row.Cells[2].Value.ToString();
 
-                foodLog_date.Value = Convert.ToDateTime(row.Cells[3].Value.ToString()); //mb w/o ToString()
-                //foodLog_date.Text = row.Cells[3].Value.ToString();
+                foodLog_date.Value = Convert.ToDateTime(row.Cells[3].Value.ToString());
             }
         }
 
+        // click on delete button
         private void foodLog_deleteBtn_Click(object sender, EventArgs e)
         {
             if (foodLog_foodType.Text == "" || foodLog_calorie.Text == "")
@@ -193,7 +203,6 @@ namespace FitnessTrackingManagementSystem
                             MessageBox.Show("Deleted successfully", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         connect.Close();
-
                     }
                 }
             }

@@ -14,23 +14,25 @@ namespace FitnessTrackingManagementSystem
 {
     public partial class Dashboard : UserControl
     {
-
+        // summary classes
         private DailySummary _dailySummary = new DailySummary();
         private WeekSummary _weekSummary = new WeekSummary();
-        private User _currentUser;
 
+        private User _currentUser;
 
         public Dashboard()
         {
             InitializeComponent();
         }
 
+        // to work with the current user
         public void SetCurrentUser(User currentUser)
         {
             _currentUser = currentUser;
             InitializeDashboard();
         }
 
+        // display values in the forms
         private void InitializeDashboard()
         {
             _dailySummary.UpdateData(_currentUser);
@@ -51,7 +53,6 @@ namespace FitnessTrackingManagementSystem
             setWeekCalGoal();
 
             setDayGoalAchieved();
-
         }
 
         public void refreshData()
@@ -65,6 +66,7 @@ namespace FitnessTrackingManagementSystem
             InitializeDashboard();
         }
 
+        // show value based on if the goal has been achieved
         public void setDayGoalAchieved()
         {
             if (-1 * _dailySummary.CalculatedNet >= _currentUser.Calorie_goal)
@@ -77,8 +79,10 @@ namespace FitnessTrackingManagementSystem
                 dashboard_calGoalAchToday.Text = "NO";
                 dashboard_calGoalAchToday.ForeColor = Color.Red;
             }
-
         }
+
+        /* next functions will make some calculations and then 
+         * set new values to the labels in the form */
         public void setDayCalGoal()
         {
             dashboard_calGoalToday.Text = _currentUser.Calorie_goal.ToString();
@@ -95,7 +99,6 @@ namespace FitnessTrackingManagementSystem
         {
             dashboard_calBurnedWeek.Text = _weekSummary.CaloriesBurned.ToString();
         }
-
         public void dailyCalConsumed()
         {
             dashboard_calConsumedToday.Text = _dailySummary.CaloriesConsumed.ToString();
@@ -108,7 +111,6 @@ namespace FitnessTrackingManagementSystem
         {
             dashboard_calNetToday.Text = (-1 * _dailySummary.CalculatedNet).ToString();
         }
-
         public void weekNet()
         {
             dashboard_calNetWeek.Text = (-1 * _weekSummary.CalculatedNet).ToString();
@@ -143,6 +145,8 @@ namespace FitnessTrackingManagementSystem
                 connect.Close();
             }
         }
+
+        // click on the question button will show the calculation information 
         private void dashboard_aboutCalculation_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Deficit = Calories Consumed - Calories Burned - Daily Calorie Needs", "Calculation Information", MessageBoxButtons.OK, MessageBoxIcon.Question);

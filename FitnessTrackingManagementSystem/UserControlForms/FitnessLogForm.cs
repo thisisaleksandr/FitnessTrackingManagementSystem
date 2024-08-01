@@ -15,18 +15,23 @@ namespace FitnessTrackingManagementSystem
 {
     public partial class FitnessLogForm : UserControl
     {
-        private int getID = 0; // get fitness log ID to update/delete it in the table
+        // getID to store the ID of the fitness entry
+        // after clicking on one of the cell in the table
+        private int getID = 0;
         private User _currentUser;
 
         public FitnessLogForm()
         {
             InitializeComponent(); 
         }
+
+        // to work with the current user in this class
         public void SetCurrentUser(User currentUser)
         {
             _currentUser = currentUser;
             InitializeFitnessLog();
         }
+
         private void InitializeFitnessLog()
         {
             displayFitnessDataList();
@@ -42,6 +47,7 @@ namespace FitnessTrackingManagementSystem
             displayFitnessDataList();
         }
 
+        // function that will populate the table with values from the database
         public void displayFitnessDataList()
         {
             FitnessData fData = new FitnessData(_currentUser);
@@ -50,9 +56,10 @@ namespace FitnessTrackingManagementSystem
             dataGridView1.DataSource = listData;
         }
 
+        // click on Add button
         private void fitnessLog_addBtn_Click(object sender, EventArgs e)
         {
-            // CHECK
+            /* validations */
             if(fitnessLog_activity.SelectedIndex == -1 || fitnessLog_calorie.Text == "" ||
                 fitnessLog_duration.Text == "")
             {
@@ -67,11 +74,11 @@ namespace FitnessTrackingManagementSystem
             }else if(fitnessLog_date.Value > DateTime.Now){
                 MessageBox.Show("The date value should be in the past", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            // add new values to the database
             else
             {
                 using (SqlConnection connect = new SqlConnection(sqlConnectionString.connectionString))
                 {
-                    // open connection to sql
                     connect.Open();
 
                     string insertData = "INSERT INTO fitness_log (user_id, activity, duration, calories, date_insert) " +
@@ -83,13 +90,12 @@ namespace FitnessTrackingManagementSystem
                         cmd.Parameters.AddWithValue("@act", fitnessLog_activity.SelectedItem);
                         cmd.Parameters.AddWithValue("@dur", Int32.Parse(fitnessLog_duration.Text.Trim()));
                         cmd.Parameters.AddWithValue("@cal", Int32.Parse(fitnessLog_calorie.Text.Trim()));
-                        cmd.Parameters.AddWithValue("@date", fitnessLog_date.Value); //was .Text
+                        cmd.Parameters.AddWithValue("@date", fitnessLog_date.Value);
                     
                         cmd.ExecuteNonQuery();
                         clearFields();
 
                         MessageBox.Show("Added successfully", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                     }
                     connect.Close();
                 }
@@ -97,7 +103,7 @@ namespace FitnessTrackingManagementSystem
             displayFitnessDataList(); // update table
         }
 
-        // filling textboxes when we click on rows
+        // get ID and fill textboxes when click on one of the cell
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if(e.RowIndex != -1)
@@ -113,8 +119,10 @@ namespace FitnessTrackingManagementSystem
             }
         }
 
+        // click on update button
         private void fitnessLog_updateBtn_Click(object sender, EventArgs e)
         {
+            /* validations */
             if (fitnessLog_activity.SelectedIndex == -1 || fitnessLog_calorie.Text == "" ||
                 fitnessLog_duration.Text == "")
             {
@@ -132,6 +140,7 @@ namespace FitnessTrackingManagementSystem
             {
                 MessageBox.Show("The date value should be in the past", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            // updates the database depending on ID
             else
             {
                 if (MessageBox.Show("Are you sure you want to update ID: " + getID + "?", "Confirmation Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -158,13 +167,13 @@ namespace FitnessTrackingManagementSystem
                             MessageBox.Show("Updated successfully", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         connect.Close();
-
                     }
                 }        
             }
             displayFitnessDataList();
         }
 
+        // function that clears the textbox
         public void clearFields()
         {
             fitnessLog_activity.SelectedIndex = -1;
@@ -172,11 +181,13 @@ namespace FitnessTrackingManagementSystem
             fitnessLog_calorie.Text = "";
         }
 
+        // click on Clear button
         private void fitnessLog_clearBtn_Click(object sender, EventArgs e)
         {
             clearFields();
         }
 
+        // click on Delete button
         private void fitnessLog_deleteBtn_Click(object sender, EventArgs e)
         {
             if (fitnessLog_activity.SelectedIndex == -1 || fitnessLog_calorie.Text == "" ||

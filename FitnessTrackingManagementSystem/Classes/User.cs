@@ -35,10 +35,12 @@ namespace FitnessTrackingManagementSystem.Classes
             _bmr_calories = bmr_calories;
             _calorie_goal = calorie_goal;
         }
+
+        // calculate the daily calorie needs
+        // I used Harris-Benedict formula to calculate calorie needs
         public int CalculateBMR(int age, double weight, double height, bool male)
         {
             double bmr;
-            // harris-benedict formula
             if (male)
             {
                 bmr = 66 + (6.23 * weight) + (12.7 * height) - (6.8 * age);
@@ -50,7 +52,5 @@ namespace FitnessTrackingManagementSystem.Classes
             }
             return (int)Math.Round(1.2 * bmr, 0);
         }
-
-
     }
 }

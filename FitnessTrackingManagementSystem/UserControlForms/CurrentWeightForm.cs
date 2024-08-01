@@ -14,6 +14,7 @@ namespace FitnessTrackingManagementSystem
 {
     public partial class CurrentWeightForm : UserControl
     {
+        // getID to store the ID of the weight entry after clicking on one of the cell
         private int getID = 0;
         private User _currentUser;
 
@@ -21,6 +22,8 @@ namespace FitnessTrackingManagementSystem
         {
             InitializeComponent();
         }
+
+        // to work with the current user in this class
         public void SetCurrentUser(User currentUser)
         {
             _currentUser = currentUser;
@@ -32,6 +35,7 @@ namespace FitnessTrackingManagementSystem
             displayWeightDataList();
         }
 
+        // refreshes data in the table
         public void refreshData()
         {
             if (InvokeRequired)
@@ -42,17 +46,24 @@ namespace FitnessTrackingManagementSystem
             displayWeightDataList();
         }
 
+        // function that will populate the table with values from the database
         public void displayWeightDataList()
         {
+            // create instance of the WeightData to store the values from the database
             WeightData wData = new WeightData(_currentUser);
+
+            // get last 12 entries
             List<WeightData> listData = wData.GetLastEntries();
 
+            // show data in the table 
             dataGridView1.DataSource = listData;
 
         }
 
+        // click on add button
         private void currWeight_addBtn_Click(object sender, EventArgs e)
         {
+            /* validations */
             if (currWeight_weight.Text == "")
             {
                 MessageBox.Show("Please fill all blank fields", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -65,6 +76,7 @@ namespace FitnessTrackingManagementSystem
             {
                 MessageBox.Show("The date value should be in the past", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            // add new value to the database
             else
             {
                 using (SqlConnection connect = new SqlConnection(sqlConnectionString.connectionString))
@@ -87,24 +99,27 @@ namespace FitnessTrackingManagementSystem
                         MessageBox.Show("Added successfully", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     connect.Close();
-
                 }
             }
             displayWeightDataList();
         }
 
+        // function that clears the textbox
         private void clearFields()
         {
             currWeight_weight.Text = "";
         }
 
+        // click on Clear button
         private void currWeight_clearBtn_Click(object sender, EventArgs e)
         {
             clearFields();
         }
 
+        // click on update button
         private void currWeight_updateBtn_Click(object sender, EventArgs e)
         {
+            // form validations
             if (currWeight_weight.Text == "")
             {
                 MessageBox.Show("Please select item from the table", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -117,6 +132,7 @@ namespace FitnessTrackingManagementSystem
             {
                 MessageBox.Show("The date value should be in the past", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            // update the database depending on ID
             else
             {
                 if (MessageBox.Show("Are you sure you want to update ID: " + getID + "?", "Confirmation Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -142,12 +158,13 @@ namespace FitnessTrackingManagementSystem
                             MessageBox.Show("Updated successfully", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         connect.Close();
-
                     }
                 }
             }
             displayWeightDataList();
         }
+
+        // click on the cell in the table to get the ID and add values to the textboxes
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex != -1)
@@ -161,6 +178,7 @@ namespace FitnessTrackingManagementSystem
             }
         }
 
+        // click on delete button
         private void currWeight_deleteBtn_Click(object sender, EventArgs e)
         {
             if (currWeight_weight.Text == "")
@@ -188,7 +206,6 @@ namespace FitnessTrackingManagementSystem
                             MessageBox.Show("Deleted successfully", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         connect.Close();
-
                     }
                 }
             }

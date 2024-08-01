@@ -9,13 +9,13 @@ namespace FitnessTrackingManagementSystem.Classes
 {
     public class DailySummary : Summary
     {
-
+        // retrieve data from the database for updating values in the dashboard
         public override void UpdateData(User currentUser)
         {
             using (SqlConnection connect = new SqlConnection(sqlConnectionString.connectionString))
             {
                 connect.Open();
-                // burned
+                // for burned calories
                 string query = "SELECT SUM(calories) from fitness_log WHERE date_insert = @date_in AND user_id = @user_id";
 
                 using (SqlCommand cmd = new SqlCommand(query, connect))
@@ -38,7 +38,7 @@ namespace FitnessTrackingManagementSystem.Classes
                     }
                 }
 
-                // consumed
+                // for consumed calories
                 query = "SELECT SUM(calories) from food_log WHERE date_insert = @date_in AND user_id = @user_id";
 
                 using (SqlCommand cmd = new SqlCommand(query, connect))
@@ -52,7 +52,6 @@ namespace FitnessTrackingManagementSystem.Classes
 
                     if (result != DBNull.Value)
                     {
-                        //int todayCalCons = Convert.ToInt32(result);
                         CaloriesConsumed = Convert.ToInt32(result);
                     }
                     else

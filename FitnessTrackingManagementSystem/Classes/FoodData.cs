@@ -20,6 +20,7 @@ namespace FitnessTrackingManagementSystem
         {
         }
 
+        // get last 12 entries from the database to populate the table
         public override List<FoodData> GetLastEntries()
         {
             List<FoodData> listData = new List<FoodData>();
@@ -35,7 +36,6 @@ namespace FitnessTrackingManagementSystem
                     cmd.Parameters.AddWithValue("@userid", _current_user.ID);
                     cmd.ExecuteNonQuery();
 
-                    // create a data reader
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())
@@ -48,7 +48,6 @@ namespace FitnessTrackingManagementSystem
                         fData.Date = ((DateTime)reader["date_insert"]).ToString("MM-dd-yyyy");
 
                         listData.Add(fData);
-
                     }
                 }
                 connect.Close();
